@@ -1,0 +1,21 @@
+msgid "UNIVERSITY NEWS"
+msgstr "TRƯỜNG ĐẠI HỌC MỚI"
+
+msgid "STUDYING AT UNIVERSITY"
+msgstr "NGHIÊN CỨU ĐẠI HỌC"
+
+msgid "Applying"
+msgstr "Applying"
+
+msgid "Browse courses"
+msgstr "Browse courses"
+
+msgid "Fees and finance"
+msgstr "Fees and finance"
+
+msgid "Graduation"
+msgstr "Graduation"
+
+msgid "Home"
+msgstr "Trang Chủ"
+

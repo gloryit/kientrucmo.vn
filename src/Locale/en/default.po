@@ -1,0 +1,21 @@
+msgid "UNIVERSITY NEWS"
+msgstr "UNIVERSITY NEWS"
+
+msgid "STUDYING AT UNIVERSITY"
+msgstr "STUDYING AT UNIVERSITY"
+
+msgid "Applying"
+msgstr "Applying"
+
+msgid "Browse courses"
+msgstr "Browse courses"
+
+msgid "Fees and finance"
+msgstr "Fees and finance"
+
+msgid "Graduation"
+msgstr "Graduation"
+
+msgid "Home"
+msgstr "Home"
+

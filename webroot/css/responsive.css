@@ -1,0 +1,144 @@
+/*######  Design by VTEM http://www.vtem.net All Rights Reserved  ###########*/
+
+/* Portrait tablet and down */
+
+@media (max-width: 1200px) {
+
+    #vtem-wrapper {
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+}
+
+@media (max-width: 991px) {
+
+    .oMenuStickOpen .nav.nav-canvas, .oMenuOverwrite {
+        display: block !important;
+    }
+
+    .main-vtem-menu,
+    .main-vtem-menu li {
+        display: block;
+        width: 100% !important;
+        margin: 1px 0 !important;
+    }
+
+    .main-vtem-menu ul,
+    .main-vtem-menu ul ul,
+    .oVertical > .main-vtem-menu ul {
+        position: relative !important;
+        width: 100% !important;
+        left: 0 !important;
+    }
+
+    .slideshow .box_skitter .prev_button,
+    .slideshow .box_skitter .next_button {
+        display: none !important;
+    }
+
+    /*///////K2 COMPONENT /////////////*/
+    .subCategoryContainer {
+        width: 100% !important;
+    }
+
+    /*/////// CURRENT THEME ////////////////////*/
+    .footer .vtem-block {
+        padding-bottom: 40px;
+    }
+
+    .vtem-section.section-top p {
+        padding-bottom: 20px;
+    }
+
+    .vtem-menu-wrapper {
+        padding: 0;
+        margin-top: 20px;
+        float: right;
+    }
+
+    .box-search .search .form-inline {
+        width: 100%;
+    }
+
+    .box_skitter h3 {
+        font-size: 36px;
+    }
+
+    .box_skitter .label_skitter h4 {
+        font-size: 24px;
+    }
+
+    .marketing_info .vtem-block {
+        padding-bottom: 40px;
+    }
+
+    .section-clientschoose .section-content > .vtem-block {
+        border: 0;
+        margin-bottom: 0px;
+    }
+
+    .section-experience {
+        text-align: center;
+    }
+
+    .section-experience .box-experience a.btn-primary {
+        position: relative;
+        right: auto;
+        top: auto;
+        margin-top: 40px;
+    }
+
+    .vtem_main_carousel {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+}
+
+/* Landscape tablet and up */
+
+@media (max-width: 768px) {
+
+    .box_skitter .label_skitter {
+        display: none !important;
+    }
+
+    .widget-gallery .vtem-gallery {
+        margin: 0 !important;
+    }
+
+    .Top_Support, .box-social {
+        padding: 15px 0px;
+        text-align: center;
+        float: none;
+    }
+
+    .box_skitter .prev_button, .box_skitter .next_button {
+        top: 55%;
+    }
+
+    .box_skitter .prev_button::before, .box_skitter .next_button::before {
+        font-size: 24px !important;
+        height: 32px;
+        line-height: 32px;
+        width: 32px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .box_skitter .label_skitter {
+        display: none !important;
+    }
+
+}
+
+@media (max-width: 320px) {
+
+}
+
+
+

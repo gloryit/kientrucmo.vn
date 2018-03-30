@@ -1,0 +1,124 @@
+.images-modal .nav-tabs li a {
+    text-transform: uppercase;
+}
+
+.images-modal .close-modal-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.images-modal .modal-dialog {
+    width: 90%;
+}
+
+.images-modal .modal-body {
+    padding: 15px 15px 0;
+}
+
+.images-modal .pagination {
+    display: inline-block;
+    margin: 10px 0 5px;
+    padding: 0;
+    float: right;
+}
+
+.images-modal .search-input-group {
+    margin: 10px 0 5px;
+    display: inline-block;
+}
+
+.images-modal .search-input-group select, .images-modal .search-input-group input, .images-modal .search-input-group button {
+    display: inline-block;
+}
+
+.images-modal .search-input-group #search_keyword {
+    width: 200px;
+}
+
+.images-modal .search-input-group #search_year, .images-modal .search-input-group #search_month, .images-modal .search-input-group #search_day {
+    width: 100px;
+}
+
+.images-modal .search-input-group .submit-search {
+    width: 80px;
+    margin-top: 1px;
+}
+
+.images-modal .images-container {
+    margin-right: -15px;
+    font-size: 0;
+}
+
+.images-modal .images-container .image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: calc(20% - 15px);
+    margin: 0 15px 15px 0;
+    border: solid 2px white;
+    cursor: pointer;
+}
+
+.images-modal .images-container .image-wrapper.selected {
+    border-color: #0073aa;
+}
+
+.images-modal .images-container .image-wrapper.selected:after {
+    opacity: 0.99;
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    right: -10px;
+    top: -9px;
+    content: "\f00c";
+    width: 25px;
+    height: 27px;
+    text-align: center;
+    background: #0073aa;
+    border: solid 1px white;
+    color: white;
+    padding-top: 2px;
+}
+
+.images-modal .images-container .content {
+    padding: 2px 5px;
+    background: #f2f2f2;
+}
+
+.images-modal .images-container .content .file-name {
+    color: #2e6da4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.images-modal .images-container .content p {
+    font-size: 10px;
+    margin-bottom: 0;
+    font-weight: 300;
+    line-height: 13px;
+    padding: 0;
+    color: black;
+}
+
+.images-modal .image-item {
+    position: relative;
+    display: block;
+    height: 100px;
+    background-position: center center;
+    background-size: cover;
+    padding: 0;
+}
+
+.images-modal .footer-buttons {
+    margin-bottom: 15px;
+}
+
+.images-modal .footer-buttons button {
+    margin: 0;
+}

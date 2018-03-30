@@ -1,0 +1,112 @@
+.images-modal {
+    $selected-color: #0073aa;
+    .nav-tabs {
+        li {
+            a {
+                text-transform: uppercase;
+            }
+        }
+    }
+    .close-modal-btn {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+    .modal-dialog {
+        width: 90%;
+    }
+    .modal-body {
+        padding: 15px 15px 0;
+    }
+    .pagination {
+        display: inline-block;
+        margin: 10px 0 5px;
+        padding: 0;
+        float: right;
+    }
+    .search-input-group {
+        margin: 10px 0 5px;
+        display: inline-block;
+        select, input, button {
+            display: inline-block;
+        }
+        #search_keyword {
+            width: 200px;
+        }
+        #search_year, #search_month, #search_day {
+            width: 100px;
+        }
+        .submit-search {
+            width: 80px;
+            margin-top: 1px;
+        }
+    }
+    .images-container {
+        margin-right: -15px;
+        font-size: 0;
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+            width: calc(20% - 15px);
+            margin: 0 15px 15px 0;
+            border: solid 2px white;
+            cursor: pointer;
+            &.selected {
+                border-color: $selected-color;
+                &:after {
+                    opacity: .99;
+                    display: inline-block;
+                    font-family: FontAwesome;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 15px;
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    position: absolute;
+                    right: -10px;
+                    top: -9px;
+                    content: "\f00c";
+                    width: 25px;
+                    height: 27px;
+                    text-align: center;
+                    background: $selected-color;
+                    border: solid 1px white;
+                    color: white;
+                    padding-top: 2px;
+                }
+            }
+        }
+        .content {
+            padding: 2px 5px;
+            background: #f2f2f2;
+            .file-name {
+                color: #2e6da4;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            p {
+                font-size: 10px;
+                margin-bottom: 0;
+                font-weight: 300;
+                line-height: 13px;
+                padding: 0;
+                color: black;
+            }
+        }
+    }
+    .image-item {
+        position: relative;
+        display: block;
+        height: 100px;
+        background-position: center center;
+        background-size: cover;
+        padding: 0;
+    }
+    .footer-buttons {
+        margin-bottom: 15px;
+        button {
+            margin: 0;
+        }
+    }
+}
