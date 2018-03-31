@@ -7,9 +7,13 @@ use App\Model\Entity\WebsiteImage;
 use Cake\Filesystem\File;
 use Cake\Http\Response;
 use Cake\I18n\Time;
+use Cake\Log\Log;
+use Cake\Network\Exception\NotFoundException;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validation;
 use Cake\Validation\Validator;
 use Intervention\Image\ImageManagerStatic;
+use Zend\Diactoros\Stream;
 
 /**
  * Class WebsiteImagesController
@@ -26,6 +30,7 @@ class WebsiteImagesController extends AdminController {
     {
         parent::initialize();
         $this->loadModel('PahAdmin.WebsiteImages');
+        $this->Auth->allow('imageUrl');
     }
 
     /**
@@ -159,15 +164,7 @@ class WebsiteImagesController extends AdminController {
 
             $errors = $file_validator->errors($this->request->getData());
 
-
             if ( !$errors ) {
-                $file_extension_map = [
-                    'gif' => 'gif',
-                    'jpeg' => 'jpg',
-                    'jpg' => 'jpg',
-                    'png' => 'png',
-                ];
-
                 $uploaded_file = $this->request->getUploadedFile('image');
                 $tmp_image = ImageManagerStatic::make($uploaded_file->getStream()->getContents());
                 $path_info = pathinfo($uploaded_file->getClientFilename());
@@ -177,10 +174,12 @@ class WebsiteImagesController extends AdminController {
                 }
 
                 $website_image = new WebsiteImage();
+                /** @var \App\Model\Entity\WebsiteImage $website_image */
                 $website_image->mine_type = $uploaded_file->getClientMediaType();
                 $website_image->name = StringAPI::filterSearchKeyword(mb_strtolower($path_info['filename']));
                 $website_image->picture = file_get_contents($uploaded_file->getStream()->getMetadata('uri'));
                 $website_image->ext = mb_strtolower($path_info['extension']);
+                $website_image->size = mb_strtolower($uploaded_file->getSize());
                 $website_image->created = new Time(); // For file name
                 $website_image->width = $tmp_image->getWidth();
                 $website_image->height = $tmp_image->getHeight();
@@ -208,14 +207,15 @@ class WebsiteImagesController extends AdminController {
                     }
                 }
 
-                $website_image->uri = $this->getImageUri($website_image->created, $website_image->name . '.' . $file_extension_map[$path_info['extension']]);
+                $website_image->uri = '/images/' .$website_image->name . '.' . $website_image->ext;
 
                 if ($this->WebsiteImages->save($website_image)) {
-                    $this->loadComponent('PahAdmin.WebsiteImage');
-                    $this->WebsiteImage->renderWebsiteImage($website_image);
+                    return $this->response->withStringBody(json_encode([
+                        'status' => 200
+                    ]));
                 }
                 return $this->response->withStringBody(json_encode([
-                    'status' => 200
+                    'Error' => "Network error save databases."
                 ]));
             }
         }
@@ -229,7 +229,7 @@ class WebsiteImagesController extends AdminController {
      * @throws \Exception Exception.
      */
     public function remove($image_id) {
-        if ($this->request->is(['patch', 'post', 'put'])) {
+        if (!$this->request->is(['patch', 'post', 'put'])) {
             throw new \Exception('Invalid request, must be PUT or POST');
         }
 
@@ -254,22 +254,52 @@ class WebsiteImagesController extends AdminController {
             ])
             ->firstOrFail();
 
-        $this->loadComponent('PahAdmin.WebsiteImage');
-        $this->WebsiteImage->removeWebsiteImage($image);
-        $this->WebsiteImages->delete($image);
+        if ($this->WebsiteImages->delete($image)) {
+            return $this->response->withHeader('Content-Type', 'application/json')
+                ->withStringBody(json_encode([
+                    'status' => 200
+                ]));
+        };
 
         return $this->response->withHeader('Content-Type', 'application/json')
             ->withStringBody(json_encode([
-                'status' => 200
+                'Error' => "Network error can't delete databases"
             ]));
     }
 
-    /**
-     * @param \Cake\I18n\Time $time Time.
-     * @param string $file_name File name.
-     * @return string
-     */
-    protected function getImageUri($time, $file_name) {
-        return WEBSITE_IMAGE_PUBLIC_PATH . $time->setTimezone(APP_TIMEZONE)->format('Y/m/') . $file_name;
+    public function imageUrl($name) {
+        $explode = explode(".", $name);
+        $name = $explode[0];
+
+        /** @var \App\Model\Entity\WebsiteImage $image */
+        $image = $this->WebsiteImages->find()
+            ->where([
+                'name' => "$name"
+            ])
+            ->first();
+
+        $file_stream = $image->picture;
+
+        if (!$file_stream) {
+            throw new NotFoundException('File not found.');
+        }
+
+        $adaptiveStream = new Stream($file_stream, 'rb');
+
+        if ($name === $image->name) {
+            return $this->response
+                ->withStatus(200)
+                ->withType($image->mine_type)
+                ->withLength($adaptiveStream->getSize())
+                ->withCache($image->created ?? 689126400, '+7 days')
+                ->withModified($image->modified)
+                ->withHeader('Pragma', 'public')
+                ->withStringBody($adaptiveStream->getContents());
+        }
+
+        return $this->response->withHeader('Content-Type', 'application/json')
+            ->withStringBody(json_encode([
+                'Error' => 404
+            ]));
     }
 }

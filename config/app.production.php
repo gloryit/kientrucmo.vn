@@ -64,8 +64,7 @@ return [
      *   You should treat it as extremely sensitive data.
      */
     'Security' => [
-        'salt' => env('SECURITY_SALT'),
-        //'salt' => env('SECURITY_SALT', '__SALT__'),
+        'salt' => env('SECURITY_SALT', '2e22242c3113028ad5128afa3f7316956dedbc94bf86d839ef8334fe6f5c3d06'),
     ],
 
     /**
@@ -181,11 +180,11 @@ return [
         'default' => [
             'className' => 'Smtp',
             // The following keys are used in SMTP transports
-            'host' => 'ssl://smtp.gmail.com',
-            'port' => 465,
-            'timeout' => 30,
-            'username' => 'nguyenchau.hoanganh@gmail.com',
-            'password' => 'wjxbkslyuyzqmsrn',
+            'host' => EmailTransport['host'],
+            'port' => EmailTransport['port'],
+            'timeout' => EmailTransport['timeout'],
+            'username' => EmailTransport['username'],
+            'password' => EmailTransport['password'],
             'client' => null,
             'tls' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
@@ -204,7 +203,7 @@ return [
     'Email' => [
         'default' => [
             'transport' => 'default',
-            'from' => 'nguyenchau.hoanganh@gmail.com',
+            'from' => Email['from'],
             'charset' => 'utf-8',
             'headerCharset' => 'utf-8',
         ],
@@ -310,6 +309,14 @@ return [
             'file' => 'queries',
             'url' => env('LOG_QUERIES_URL', null),
             'scopes' => ['queriesLog'],
+        ],
+        'routes_error' => [
+            'className' => 'Cake\Log\Engine\FileLog',
+            'path' => LOGS,
+            'file' => 'error',
+            'url' => env('LOG_ERROR_URL', null),
+            'scopes' => 'routes_error',
+            'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],
         ],
     ],
 

@@ -2,6 +2,7 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Routing\Router;
 
 /**
  * WebsiteImage Entity
@@ -11,6 +12,7 @@ use Cake\ORM\Entity;
  * @property string|resource $picture
  * @property string $ext
  * @property string $uri
+ * @property int $size
  * @property int $width
  * @property int $height
  * @property string $mine_type
@@ -37,9 +39,30 @@ class WebsiteImage extends Entity
         'uri' => true,
         'width' => true,
         'height' => true,
+        'size' => true,
         'mine_type' => true,
         'delete_flag' => true,
         'created' => true,
         'modified' => true
     ];
+
+    /**
+     * @return string
+     */
+    protected function _getWebsiteImageUrl() {
+        if ($this->id && $this->name) {
+            return Router::url("/images/{$this->id}-{$this->name}.{$this->ext}". '?v=' . md5($this->created));
+        }
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getWebsiteImageUrlFull() {
+        if ($this->id && $this->name) {
+            return Router::url("/images/{$this->id}-{$this->name}.{$this->ext}". '?v=' . md5($this->created), true);
+        }
+        return '';
+    }
 }

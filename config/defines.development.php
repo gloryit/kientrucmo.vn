@@ -30,9 +30,9 @@ define('DATABASE_DEFAULT', [
 ]);
 
 /**
- * Config Email
+ * Config EmailTransport
  */
-define('EMAIL_DEFAULT', [
+define('EmailTransport', [
     'host' => 'ssl://smtp.gmail.com',
     'port' => 465,
     'timeout' => 30,
@@ -41,7 +41,8 @@ define('EMAIL_DEFAULT', [
 ]);
 
 /**
- * Website upload Path
+ * Config Email
  */
-define('WEBSITE_IMAGE_PATH', WWW_ROOT . 'upload' . DS . 'website' . DS);
-define('WEBSITE_IMAGE_PUBLIC_PATH', '/upload/website/');
+define('Email', [
+    'from' => 'nguyenchau.hoanganh@gmail.com',
+]);

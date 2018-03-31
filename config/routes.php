@@ -79,6 +79,15 @@ Router::scope('/', ['_namePrefix' => 'app:'], function (RouteBuilder $routes) {
         '_name' => 'customers',
     ]);
 
+    $routes->connect('/images/:name', [
+        'controller' => 'WebsiteImages',
+        'action' => 'imageUrl',
+        'plugin' => 'PahAdmin'
+    ], [
+        'pass' => ['name'],
+        '_name' => 'images'
+    ]);
+
     /**
      * Connect catchall routes for all controllers.
      *

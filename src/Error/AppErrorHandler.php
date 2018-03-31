@@ -43,7 +43,7 @@ class AppErrorHandler extends ErrorHandler
         }
 
         if ($exception instanceof MissingControllerException || $exception instanceof MissingRouteException || $exception instanceof MissingActionException) {
-            return Log::write('error', $this->_getMessage($exception));
+            return Log::error($this->_getMessage($exception));
         } else {
             return Log::error($this->_getMessage($exception));
         }
