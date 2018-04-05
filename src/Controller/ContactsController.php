@@ -8,9 +8,12 @@
 
 namespace App\Controller;
 
-
 use Cake\Mailer\Email;
 
+/**
+ * Class ContactsController
+ * @package App\Controller
+ */
 class ContactsController extends AppController {
 
     public function initialize() {
@@ -27,7 +30,9 @@ class ContactsController extends AppController {
             ])
             ->firstOrFail();
 
-        $this->set(compact('contact'));
+        $title = 'Liên hệ - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
+
+        $this->set(compact('contact', 'title'));
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();

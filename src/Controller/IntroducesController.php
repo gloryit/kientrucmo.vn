@@ -38,7 +38,9 @@ class IntroducesController extends AppController {
             ])
             ->firstOrFail();
 
-        $this->set(compact('posts', 'group'));
+        $title = 'Giới thiệu - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
+
+        $this->set(compact('posts', 'group', 'title'));
     }
 
     /**
@@ -63,6 +65,8 @@ class IntroducesController extends AppController {
             ])
             ->first();
 
-        $this->set(compact('post', 'group'));
+        $title = $post->title . ' - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
+
+        $this->set(compact('post', 'group', 'title'));
     }
 }

@@ -36,7 +36,9 @@ class RecruitmentsController extends AppController {
             ])
             ->first();
 
-        $this->set(compact('post', 'group'));
+        $title = 'Tuyển dụng - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
+
+        $this->set(compact('post', 'group', 'title'));
     }
 
 }

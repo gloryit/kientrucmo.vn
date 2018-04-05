@@ -8,6 +8,10 @@
 
 namespace App\Controller;
 
+/**
+ * Class HomesController
+ * @package App\Controller
+ */
 class HomesController extends AppController {
     public function initialize() {
         parent::initialize();

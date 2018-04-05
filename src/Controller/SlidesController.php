@@ -1,14 +1,9 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\AppController;
-
 /**
- * Slides Controller
- *
- * @property \App\Model\Table\SlidesTable $Slides
- *
- * @method \App\Model\Entity\Slide[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * Class SlidesController
+ * @package App\Controller
  */
 class SlidesController extends AppController
 {

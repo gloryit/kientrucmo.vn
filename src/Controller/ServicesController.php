@@ -35,7 +35,9 @@ class ServicesController extends AppController {
             ])
             ->firstOrFail();
 
-        $this->set(compact('posts', 'group'));
+        $title = 'Dịch vụ - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
+
+        $this->set(compact('posts', 'group', 'title'));
     }
 
     /**
@@ -67,7 +69,9 @@ class ServicesController extends AppController {
             ])
             ->toArray();
 
-        $this->set(compact('post', 'group', 'any'));
+        $title = $post->title . ' - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
+
+        $this->set(compact('post', 'group', 'any', 'title'));
     }
 
 }
