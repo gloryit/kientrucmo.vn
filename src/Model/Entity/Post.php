@@ -57,7 +57,7 @@ class Post extends Entity
      */
     protected function _getLinkImages() {
         if (empty($this->uri)) {
-            return '/upload/404-not-found.gif';
+            return '/upload/no_image.svg';
         }
         return $this->uri;
     }

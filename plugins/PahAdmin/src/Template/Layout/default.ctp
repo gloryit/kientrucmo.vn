@@ -1,6 +1,7 @@
 <?php
 /**
  * @var \PahAdmin\View\AdminView $this
+ * @var \App\Model\Entity\User $user
  */
 ?>
 <!DOCTYPE html>

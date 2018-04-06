@@ -53,7 +53,7 @@ class WebsiteImage extends Entity
         if ($this->id && $this->name) {
             return Router::url("/images/{$this->id}-{$this->name}.{$this->ext}". '?v=' . md5($this->created));
         }
-        return '';
+        return '/upload/no_image.svg';
     }
 
     /**
@@ -63,6 +63,6 @@ class WebsiteImage extends Entity
         if ($this->id && $this->name) {
             return Router::url("/images/{$this->id}-{$this->name}.{$this->ext}". '?v=' . md5($this->created), true);
         }
-        return '';
+        return '/upload/no_image.svg';
     }
 }

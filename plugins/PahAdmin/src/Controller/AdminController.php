@@ -58,6 +58,7 @@ class AdminController extends Controller
 //         Login check
         if ($this->Auth->user()) {
             $this->set('LoggedIn', true);
+            $this->set('user', $this->Auth->user()??[]);
         } else {
             $this->set('LoggedIn', false);
         }
