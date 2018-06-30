@@ -215,4 +215,4 @@ if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
 
-Plugin::load('Administrator', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('PahAdmin', ['bootstrap' => false, 'routes' => true]);
