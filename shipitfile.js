@@ -105,9 +105,22 @@ module.exports = function (shipit) {
 
         let bootstrap_file = _isProduction() ? 'bootstrap.production.php' : 'bootstrap.development.php';
 
-        return shipit.remote('cp config/' + bootstrap_file + ' config/bootstrap.php', {cwd: shipit.config.deployTo})
+        return shipit.remote('rm -rf config/bootstrap.php && cp config/' + bootstrap_file + ' config/bootstrap.php', {cwd: shipit.config.deployTo})
             .then(function() {
                 shipit.log(chalk.green('Update bootstrap.php done!'));
+
+                _printSeparator();
+            })
+    }
+
+    function updateAppFile() {
+        shipit.log(chalk.yellow('Updating app.php file...'));
+
+        let bootstrap_file = _isProduction() ? 'app.production.php' : 'app.development.php';
+
+        return shipit.remote('rm -rf config/app.php && cp config/' + bootstrap_file + ' config/app.php', {cwd: shipit.config.deployTo})
+            .then(function() {
+                shipit.log(chalk.green('Update app.php done!'));
 
                 _printSeparator();
             })
@@ -118,7 +131,7 @@ module.exports = function (shipit) {
 
         let bootstrap_file = _isProduction() ? 'defines.production.php' : 'defines.development.php';
 
-        return shipit.remote('cp config/' + bootstrap_file + ' config/defines.php', {cwd: shipit.config.deployTo})
+        return shipit.remote('rm -rf config/defines.php && cp config/' + bootstrap_file + ' config/defines.php', {cwd: shipit.config.deployTo})
             .then(function() {
                 shipit.log(chalk.green('Update defines.php done!'));
 
@@ -184,6 +197,7 @@ module.exports = function (shipit) {
             .then(composerInstall)
             .then(updateBootstrapFile)
             .then(updateDefinesFile)
+            .then(updateAppFile)
             .then(deleteCache)
             .then(restartPhpFpm);
     });
