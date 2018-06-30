@@ -22,11 +22,11 @@ define('LOCALE_EN', APP . 'Locale' . DS . 'en' . DS . 'default.po');
  * Config database
  */
 define('DATABASE_DEFAULT', [
-    'host' => '163.44.194.35',
+    'host' => 'localhost',
     'port' => 3306,
-    'username' => 'cp464490_pah',
-    'password' => '946517Aa',
-    'database' => 'cp464490_pah'
+    'username' => 'root',
+    'password' => 'tmphucgl',
+    'database' => 'kientrucmo'
 ]);
 
 /**

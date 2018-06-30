@@ -26,7 +26,7 @@ define('DATABASE_DEFAULT', [
     'port' => 3306,
     'username' => 'root',
     'password' => 'root',
-    'database' => 'pah'
+    'database' => 'kientrucmo'
 ]);
 
 /**

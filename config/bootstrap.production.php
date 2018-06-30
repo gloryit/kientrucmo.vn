@@ -18,6 +18,7 @@
  */
 require __DIR__ . '/paths.php';
 require __DIR__ . '/defines.php';
+require __DIR__ . '/functions.php';
 
 /*
  * Bootstrap CakePHP.

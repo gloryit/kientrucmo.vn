@@ -6,6 +6,7 @@
 /config/defines.php
 /config/app.php
 /config/bootstrap.php
+node_modules/
 
 # OS generated files #
 ######################
