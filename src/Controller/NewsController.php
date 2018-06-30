@@ -26,22 +26,21 @@ class NewsController extends AppController {
         /** @var \App\Model\Entity\Post[] $posts */
         $posts = $this->Posts->find()
             ->where([
-                'group_id' => 4,
+                'menu_id' => 4,
                 'delete_flag' => false
             ])
             ->toArray();
 
-        /** @var \App\Model\Entity\Group $group */
-        $group = $this->Groups->find()
+        /** @var \App\Model\Entity\Menu $menu */
+        $menu = $this->Menus->find()
             ->where([
                 'id' => 4,
-                'delete_flag' => false
             ])
             ->first();
 
         $title = 'Tin tức - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
 
-        $this->set(compact('posts', 'group', 'title'));
+        $this->set(compact('posts', 'menu', 'title'));
     }
 
     /**
@@ -57,15 +56,14 @@ class NewsController extends AppController {
             ])
             ->firstOrFail();
 
-        /** @var \App\Model\Entity\Group $group */
-        $group = $this->Groups->find()
+        /** @var \App\Model\Entity\Menu $menu */
+        $menu = $this->Menus->find()
             ->where([
-                'id' => $post->group_id,
-                'delete_flag' => false
+                'id' => $post->menu_id,
             ])
             ->first();
 
         $title = $post->title . ' - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
-        $this->set(compact('post', 'group', 'title'));
+        $this->set(compact('post', 'menu', 'title'));
     }
 }

@@ -12,7 +12,7 @@
                 <a href="<?= $this->Url->build(['controller' => 'Slides', 'action' => 'index', 'plugin' => 'PahAdmin']) ?>"><i class="fa fa-sliders"></i> SLIDES </a>
             </li>
             <li>
-                <a href="<?= $this->Url->build(['controller' => 'Groups', 'action' => 'index', 'plugin' => 'PahAdmin']) ?>"><i class="fa fa-users"></i> GROUPS </a>
+                <a href="<?= $this->Url->build(['controller' => 'Menus', 'action' => 'index', 'plugin' => 'PahAdmin']) ?>"><i class="fa fa-users"></i> MENUS </a>
             </li>
             <li>
                 <a href="<?= $this->Url->build(['controller' => 'Posts', 'action' => 'index', 'plugin' => 'PahAdmin']) ?>"><i class="fa fa-newspaper-o"></i> POSTS </a>

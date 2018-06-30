@@ -4,8 +4,8 @@
     RewriteCond %{HTTPS} off
     RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
     
-    RewriteCond %{HTTP_HOST} ^www.pah.com.vn [NC]
-    RewriteRule ^(.*)$ https://pah.com.vn/$1 [L,R=301]
+    RewriteCond %{HTTP_HOST} ^pah.com.vn [NC]
+    RewriteRule ^(.*)$ https://www.pah.com.vn/$1 [L,R=301]
 
     RewriteCond %{HTTP:X-Forwarded-Proto} ^http$
     RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

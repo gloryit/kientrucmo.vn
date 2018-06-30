@@ -25,22 +25,21 @@ class IntroducesController extends AppController {
     public function index() {
         $posts = $this->Posts->find()
             ->where([
-                'group_id' => 1,
+                'menu_id' => 1,
                 'delete_flag' => false
             ])
             ->orderDesc('created')
             ->toArray();
 
-        $group = $this->Groups->find()
+        $menu = $this->Menus->find()
             ->where([
                 'id' => 3,
-                'delete_flag' => false
             ])
             ->firstOrFail();
 
         $title = 'Giới thiệu - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
 
-        $this->set(compact('posts', 'group', 'title'));
+        $this->set(compact('posts', 'menu', 'title'));
     }
 
     /**
@@ -52,21 +51,20 @@ class IntroducesController extends AppController {
         $post = $this->Posts->find()
             ->where([
                 'slug' => $slug,
-                'group_id' => 1,
+                'menu_id' => 1,
                 'delete_flag' => false
             ])
             ->first();
 
-        /** @var \App\Model\Entity\Group $group */
-        $group = $this->Groups->find()
+        /** @var \App\Model\Entity\Menu $menu */
+        $menu = $this->Menus->find()
             ->where([
                 'id' => 1,
-                'delete_flag' => false
             ])
             ->first();
 
         $title = $post->title . ' - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
 
-        $this->set(compact('post', 'group', 'title'));
+        $this->set(compact('post', 'menu', 'title'));
     }
 }

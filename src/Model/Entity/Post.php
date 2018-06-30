@@ -15,14 +15,14 @@ use Cake\ORM\Entity;
  * @property int $dsp_order
  * @property int $delete_flag
  * @property int $is_active
- * @property int $group_id
+ * @property int $menu_id
  * @property string $author
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property string $link_images
  *
- * @property \App\Model\Entity\Group $group
+ * @property \App\Model\Entity\Menu $menu
  */
 class Post extends Entity
 {
@@ -45,11 +45,11 @@ class Post extends Entity
         'dsp_order' => true,
         'delete_flag' => true,
         'is_active' => true,
-        'group_id' => true,
+        'menu_id' => true,
         'author' => true,
         'created' => true,
         'modified' => true,
-        'group' => true
+        'menu' => true
     ];
 
     /**

@@ -62,8 +62,7 @@
                     <div class="vtem-block-inside clearfix">
                         <div class="logo1 clearfix">
                             <a href="/">
-<!--                                <img src="/images/vt_logo_style1.png" alt="" class="" />-->
-                                <img src="/logo/thumbnail-logo.jpg" alt="" class="" />
+                                <img src="/assets/images/logo/logo-kientruc-mo.png" alt="Logo kiến trúc mo" class="logo-kien-truc-mo" />
                             </a>
                         </div>
                     </div>
@@ -72,9 +71,6 @@
                 <div id="block14e52c68f0e7306" style="background-color:; color:#FFFFFF" class="vtem-block system widget-menu  col-md-9 vtem-menu col-sm-9 col-xs-3" data-vgrid="9">
                     <div class="vtem-block-inside clearfix">
                         <ul class="nav menu nav-pills vtem-menu" id="menu14e52c68f0e7306">
-                            <li class="item-101 default current<?= ($isPage === 'homes') ? ' active': '' ?>">
-                                <a href="/" class="text-uppercase">+ p a h</a>
-                            </li>
                             <li class="item-188 deeper parent<?= ($isPage === 'introduces') ? ' active': '' ?>">
                                 <span class="text-uppercase">GIỚI THIỆU</span>
                                 <?php if (!empty($app_introduces)): ?>
@@ -95,12 +91,18 @@
                                     </ul>
                                 <?php endif; ?>
                             </li>
-                            <li class="item-104<?= ($isPage === 'highlights') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:highlights']) ?>" >DỰ ÁN TIÊU BIỂU</a></li>
-                            <li class="item-105<?= ($isPage === 'news') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:news']) ?>" >TIN TỨC</a></li>
-<!--                            <li class="item-140"><a href="/vi/doi-tac.html" >ĐỐI TÁC</a></li>-->
-                            <li class="item-108<?= ($isPage === 'customers') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:customers']) ?>" >KHÁCH HÀNG</a></li>
-                            <li class="item-106<?= ($isPage === 'recruitments') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:recruitments']) ?>" >TUYỂN DỤNG</a></li>
-                            <li class="item-107<?= ($isPage === 'contacts') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:contact']) ?>" >LIÊN HỆ</a></li>
+                            <li class="item-103 deeper parent<?= ($isPage === 'highlights') ? ' active': '' ?>">
+                                <?php if (!empty($app_services)): ?>
+                                    <span class="text-uppercase">CÔNG TRÌNH THỰC TẾ</span>
+                                    <ul class="nav-child unstyled small">
+                                        <?php foreach ($app_services as $service) :?>
+                                            <li class="item-<?= h($service->id) ?> text-uppercase"><a href="<?= $this->Url->build(['_name' => 'services:view', $service->slug]) ?>"><?= h($service->title) ?></a></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            </li>
+                            <li class="item-105 deeper parent<?= ($isPage === 'news') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:news']) ?>" >TIN TỨC</a></li>
+                            <li class="item-106 deeper parent<?= ($isPage === 'contacts') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:contact']) ?>" >LIÊN HỆ</a></li>
                         </ul>
                         <script type="text/javascript">
                             jQuery(document).ready(function(){

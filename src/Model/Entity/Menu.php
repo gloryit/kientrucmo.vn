@@ -4,18 +4,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Group Entity
+ * Menu Entity
  *
  * @property int $id
+ * @property int $child_menu
  * @property string $title
  * @property string $slug
  * @property int $dsp_order
- * @property int $delete_flag
  * @property int $is_active
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  */
-class Group extends Entity
+class Menu extends Entity
 {
 
     /**
@@ -28,10 +28,10 @@ class Group extends Entity
      * @var array
      */
     protected $_accessible = [
+        'child_menu' => true,
         'title' => true,
         'slug' => true,
         'dsp_order' => true,
-        'delete_flag' => true,
         'is_active' => true,
         'created' => true,
         'modified' => true

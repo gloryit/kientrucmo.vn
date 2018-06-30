@@ -6,7 +6,7 @@
  * Time: 10:18 PM
  *
  * @var \App\Model\Entity\Post $post
- * @var \App\Model\Entity\Group $group
+ * @var \App\Model\Entity\Menu $menu
  * @var \App\View\AppView $this
  * @var string $isPage
  */
@@ -31,7 +31,7 @@
                             Viết bởi <span itemprop="name"><?= h($post->author) ?></span>
                         </dd>
                         <dd class="category-name">
-                            Chuyên mục: <a href="<?= $this->Url->build(['_name' => 'app:' . $isPage]) ?>" itemprop="genre"><?= h($group->title) ?></a>
+                            Chuyên mục: <a href="<?= $this->Url->build(['_name' => 'app:' . $isPage]) ?>" itemprop="genre"><?= h($menu->title) ?></a>
                         </dd>
                         <dd class="create">
                             <span class="icon-calendar" aria-hidden="true"></span>

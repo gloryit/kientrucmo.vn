@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Post $posts
  * @var string $flash_error_key
  */
-$flash_error_key = '1234';
+$flash_error_key = 'flash_error_key';
 ?>
 <div class="block">
     <div class="page-title">
@@ -50,7 +50,7 @@ $flash_error_key = '1234';
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="company-id">Group Name:</label>
                                 <div class="col-sm-8">
-                                    <?= $this->Form->select('group_id',[
+                                    <?= $this->Form->select('menu_id',[
                                         '1' => 'Giới thiệu',
                                         '2' => 'Dịch vụ',
                                         '3' => 'Dự án tiêu biểu',
@@ -59,7 +59,7 @@ $flash_error_key = '1234';
                                         '6' => 'Khách hàng',
                                         '7' => 'Tuyển dụng'
                                     ], [
-                                        'value' => !empty($posts->group_id) ? h($posts->group_id) : '',
+                                        'value' => !empty($posts->menu_id) ? h($posts->menu_id) : '',
                                         'class' => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',

@@ -6,7 +6,7 @@
  * Time: 7:17 PM
  *
  * @var \App\Model\Entity\Post[] $posts
- * @var \App\Model\Entity\Group $group
+ * @var \App\Model\Entity\Menu $menu
  * @var \App\View\AppView $this
  */
 ?>
@@ -31,7 +31,7 @@
                                         <dd class="createdby" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
                                             Viết bởi <span itemprop="name"><?= h($post->author) ?></span> </dd>
                                         <dd class="category-name">
-                                            Chuyên mục: <a href="<?= $this->Url->build(['_name' => 'app:news']) ?>" itemprop="genre"><?= h($group->title) ?></a> </dd>
+                                            Chuyên mục: <a href="<?= $this->Url->build(['_name' => 'app:news']) ?>" itemprop="genre"><?= h($menu->title) ?></a> </dd>
                                         <dd class="create">
                                             <span class="icon-calendar" aria-hidden="true"></span>
                                             <time datetime="2018-01-03T12:17:32+07:00" itemprop="dateCreated">

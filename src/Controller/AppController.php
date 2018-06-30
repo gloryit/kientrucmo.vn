@@ -23,7 +23,7 @@ use Cake\Controller\Controller;
  * will inherit them.
  *
  * @property \App\Model\Table\PostsTable $Posts
- * @property \App\Model\Table\GroupsTable $Groups
+ * @property \App\Model\Table\MenusTable $Menus
  * @property \App\Model\Table\ContactsTable $Contacts
  * @property \App\Model\Table\SlidesTable $Slides
  * @property \App\Model\Table\WebsiteImagesTable $WebsiteImages
@@ -56,7 +56,7 @@ class AppController extends Controller
         //$this->loadComponent('Security');
         $this->loadComponent('Csrf');
         $this->loadModel('Posts');
-        $this->loadModel('Groups');
+        $this->loadModel('Menus');
         $this->loadModel('Contacts');
         $this->loadModel('Slides');
         $this->loadModel('Banners');
@@ -64,7 +64,7 @@ class AppController extends Controller
         /** @var \App\Model\Entity\Post $app_introduces */
         $app_introduces = $this->Posts->find()
             ->where([
-                'group_id' => 1,
+                'menu_id' => 1,
                 'delete_flag' => false
             ])
             ->toArray();
@@ -72,14 +72,14 @@ class AppController extends Controller
         /** @var \App\Model\Entity\Post[] $app_services */
         $app_services = $this->Posts->find()
             ->where([
-                'group_id' => 2,
+                'menu_id' => 2,
                 'delete_flag' => false
             ])
             ->toArray();
 
         $app_highlights = $this->Posts->find()
             ->where([
-                'group_id' => 3,
+                'menu_id' => 3,
                 'delete_flag' => false
             ])
             ->orderDesc('created')
@@ -88,7 +88,7 @@ class AppController extends Controller
         /** @var \App\Model\Entity\Post $app_introduce */
         $app_introduce = $this->Posts->find()
             ->where([
-                'group_id' => 1,
+                'menu_id' => 1,
                 'delete_flag' => false
             ])
             ->first();

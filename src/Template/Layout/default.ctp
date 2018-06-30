@@ -48,6 +48,13 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
-<div class="fb-customerchat" page_id="1920286804668467" minimized="true"></div>
+<div class="fb-customerchat"
+     page_id="1833818310010640"
+     theme_color="#f49b00"
+     greeting_dialog_display="fade"
+     logged_in_greeting="Chào bạn, trò chuyện với chúng tôi để được hỗ trợ tốt nhất nhé."
+     logged_out_greeting="Chào bạn, trò chuyện với chúng tôi để được hỗ trợ tốt nhất nhé."
+     minimized="true">
+</div>
 </body>
 </html>

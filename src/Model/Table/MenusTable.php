@@ -1,16 +1,14 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
-use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Class GroupsTable
+ * Class MenusTable
  * @package App\Model\Table
  */
-class GroupsTable extends Table
+class MenusTable extends Table
 {
 
     /**
@@ -23,7 +21,7 @@ class GroupsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('groups');
+        $this->setTable('menus');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 
@@ -41,6 +39,10 @@ class GroupsTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
+
+        $validator
+            ->requirePresence('child_menu', 'create')
+            ->notEmpty('child_menu');
 
         $validator
             ->scalar('title')

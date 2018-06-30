@@ -14,6 +14,7 @@ use Cake\I18n\Time;
  * @property \App\Model\Table\PostsTable $Posts
  * @property \App\Model\Table\ContactsTable $Contacts
  * @property \App\Model\Table\BannersTable $Banners
+ * @property \App\Model\Table\MenusTable $Menus
  */
 class AdminController extends Controller
 {
@@ -48,6 +49,20 @@ class AdminController extends Controller
             ],
             'authError' => 'Did you really think you are allowed to see that?'
         ]);
+
+        $this->loadModel('Menus');
+        $menus = $this->Menus->find()->toArray();
+
+        $options = [
+            '0' => 'Default'
+        ];
+        if (!empty($menus)) {
+            foreach ($menus as $option) {
+                $options[h($option->id)] = mb_ucwords(h($option->title));
+            }
+        }
+
+        $this->set(compact('options'));
     }
 
     /**

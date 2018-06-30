@@ -18,22 +18,21 @@ class HighlightsController extends AppController {
     public function index() {
         $posts = $this->Posts->find()
             ->where([
-                'group_id' => 3,
+                'menu_id' => 3,
                 'delete_flag' => false
             ])
             ->orderDesc('created')
             ->toArray();
 
-        $group = $this->Groups->find()
+        $menu = $this->Menus->find()
             ->where([
                 'id' => 3,
-                'delete_flag' => false
             ])
             ->firstOrFail();
 
         $title = 'Dự án tiêu biểu - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
 
-        $this->set(compact('posts', 'group', 'title'));
+        $this->set(compact('posts', 'menu', 'title'));
     }
 
     /**
@@ -49,16 +48,15 @@ class HighlightsController extends AppController {
             ])
             ->firstOrFail();
 
-        /** @var \App\Model\Entity\Group $group */
-        $group = $this->Groups->find()
+        /** @var \App\Model\Entity\Menu $menu */
+        $menu = $this->Menus->find()
             ->where([
-                'id' => $post->group_id,
-                'delete_flag' => false
+                'id' => $post->menu_id,
             ])
             ->first();
 
         $title = $post->title . ' - Thiết kế kiến trúc, nội thất... - + P A H - pah.com.vn';
 
-        $this->set(compact('post', 'group', 'title'));
+        $this->set(compact('post', 'menu', 'title'));
     }
 }

@@ -16,7 +16,7 @@ class HomesController extends AppController {
     public function initialize() {
         parent::initialize();
         $this->loadModel('Posts');
-        $this->loadModel('Groups');
+        $this->loadModel('Menus');
         $this->loadModel('Slides');
         $this->loadModel('Banners');
     }
@@ -25,7 +25,7 @@ class HomesController extends AppController {
         $tops = $this->Posts->find()
             ->order(['RAND()'])
             ->where([
-                'group_id' => 2,
+                'menu_id' => 2,
                 'delete_flag' => false
             ])
             ->limit(3)
@@ -33,7 +33,7 @@ class HomesController extends AppController {
 
         $news = $this->Posts->find()
             ->where([
-                'group_id' => 4,
+                'menu_id' => 4,
                 'delete_flag' => false
             ])
             ->orderDesc('created')
@@ -41,7 +41,7 @@ class HomesController extends AppController {
 
         $highlights = $this->Posts->find()
             ->where([
-                'group_id' => 3,
+                'menu_id' => 3,
                 'delete_flag' => false
             ])
             ->orderDesc('created')

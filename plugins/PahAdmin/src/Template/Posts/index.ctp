@@ -81,8 +81,6 @@
         var $toppageLogo_table = $('#toppageLogo_table');
         var edit_url = "<?= $this->Url->build(['plugin' => 'PahAdmin', 'controller' => 'Posts', 'action' => 'edit']) ?>/";
         var datatables_config = {
-            "dom": '<"top"i>prt<"bottom"l><"clear">',
-            "rowId": 'id',
             "serverSide": true,
             "pageLength": 10,
             "ajax": {
@@ -118,7 +116,7 @@
                 },
                 {
                     "targets": 3,
-                    "data": 'group_id',
+                    "data": 'menu_id',
                     "render": function (data) {
                         var index = {
                             1: 'Giới thiệu',

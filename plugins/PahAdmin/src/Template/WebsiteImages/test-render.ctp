@@ -49,7 +49,7 @@ $form = $this->Form;
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Group <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <?= $form->select('group_id',[
+                            <?= $form->select('menu_id',[
                                 '1' => 'Giới thiệu',
                                 '2' => 'Dịch vụ',
                                 '3' => 'Dự án tiêu biểu',

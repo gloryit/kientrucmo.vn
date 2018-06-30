@@ -1,14 +1,15 @@
 <?php
 /**
  * @var \PahAdmin\View\AdminView $this
- * @var \App\Model\Entity\Group $group
+ * @var \App\Model\Entity\Menu $menu
+ * @var \App\Model\Entity\Menu[] $menus
  */
 ?>
 <div class="block">
     <div class="page-title">
         <div class="title_left">
             <h3>
-                <a href="<?php $this->Url->build(['controller'=>'Groups','action'=>'index','plugin'=>'PahAdmin']) ?>">GROUPS</a>
+                <a href="<?php $this->Url->build(['controller'=>'Menus','action'=>'index','plugin'=>'PahAdmin']) ?>">Menus</a>
             </h3>
         </div>
     </div>
@@ -19,38 +20,51 @@
                 <div class="x_content">
                     <div class="row">
                         <div class="col-md-12" style="margin-bottom: 5px">
-                            <a href="<?= $this->Url->build(['controller'=>'Groups','action'=>'index','plugin'=>'PahAdmin']) ?>" class="btn btn-default">
+                            <a href="<?= $this->Url->build(['controller'=>'Menus','action'=>'index','plugin'=>'PahAdmin']) ?>" class="btn btn-default">
                                 <i class="fa fa-reply" aria-hidden="true"></i> Back to list
                             </a>
                             <hr>
                         </div>
                         <div class="col-md-12">
                             <div class="clearfix"></div>
-                            <?= $this->Form->create('', [
+                            <?= $this->Form->create($menu, [
                                 'class'     => 'form-horizontal form-label-left',
                                 'type'      => 'file',
                                 'id'        => 'edit-form',
                                 'data-parsley-validate' => '',
                                 'novalidate',
                             ]) ?>
-                            <?php if(!empty($group->id)) : ?>
+                            <?php if(!empty($menu->id)) : ?>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="pwd">ID:</label>
                                     <div class="col-sm-8">
-                                        <h5><?= $group->id ?></h5>
+                                        <h5><?= $menu->id ?></h5>
                                     </div>
                                 </div>
                             <?php endif; ?>
 
                             <div class="form-group">
-                                <label class="control-label col-xs-2">Group Title:</label>
+                                <label class="control-label col-sm-2" for="company-id">Menu Cha:</label>
+                                <div class="col-sm-8">
+                                    <?= $this->Form->select('child_menu', $options, [
+                                        'value' => ($menu->child_menu) ?? '',
+                                        'class' => 'form-control',
+                                        'data-parsley-required' => 'true',
+                                        'data-parsley-trigger' => 'change',
+                                        'label' => false
+                                    ]) ?>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-2">Menu Title:</label>
                                 <div class="col-xs-8">
                                     <?= $this->Form->control('title', [
                                         'type'      => 'text',
                                         'class'     => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
-                                        'value' => !empty($group->title) ? h($group->title) : '',
+                                        'value' => !empty($menu->title) ? h($menu->title) : '',
                                         'label'     => false
                                     ])?>
                                 </div>
@@ -62,7 +76,7 @@
                                     <?= $this->Form->control('dsp_order', [
                                         'type'      => 'number',
                                         'class'     => 'form-control',
-                                        'value' => !empty($group->dsp_order) ? h($group->dsp_order) : 0,
+                                        'value' => !empty($menu->dsp_order) ? h($menu->dsp_order) : 0,
                                         'data-parsley-required' => 'true',
                                         'label'     => false
                                     ]);?>
@@ -76,7 +90,7 @@
                                         <?= $this->Form->checkbox('is_active',[
                                             'class' => 'js-switch',
                                             'data-parsley-required' => 'true',
-                                            'checked' => ($group->is_active) ?? true,
+                                            'checked' => ($menu->is_active) ?? true,
                                             'label' => false
                                         ]) ?>
                                     </div>

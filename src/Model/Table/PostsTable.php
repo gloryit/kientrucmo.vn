@@ -29,8 +29,8 @@ class PostsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Groups', [
-            'foreignKey' => 'group_id',
+        $this->belongsTo('Menus', [
+            'foreignKey' => 'menu_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -100,7 +100,7 @@ class PostsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['group_id'], 'Groups'));
+        $rules->add($rules->existsIn(['menu_id'], 'Menus'));
 
         return $rules;
     }

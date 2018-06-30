@@ -285,12 +285,13 @@ div.itemCommentsForm form input#submitCommentButton {
 }
 
 .vtem-menu-wrapper {
-    padding: 25px 0px 0px;
+    padding: 25px 0 15px;
     display: inline-block;
     float: left;
 }
 
 .vtem-menu-wrapper .nav.vtem-menu {
+    margin-top: 15px;
 }
 
 .main-vtem-menu > li {
