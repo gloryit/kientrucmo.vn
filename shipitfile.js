@@ -100,6 +100,19 @@ module.exports = function (shipit) {
             })
     }
 
+    function updateBootstrapFile() {
+        shipit.log(chalk.yellow('Updating bootstrap.php file...'));
+
+        let bootstrap_file = _isProduction() ? 'bootstrap.production.php' : 'bootstrap.development.php';
+
+        return shipit.remote('cp config/' + bootstrap_file + ' config/bootstrap.php', {cwd: shipit.config.deployTo})
+            .then(function() {
+                shipit.log(chalk.green('Update bootstrap.php done!'));
+
+                _printSeparator();
+            })
+    }
+
     function updateDefinesFile() {
         shipit.log(chalk.yellow('Updating defines.php file...'));
 
@@ -169,6 +182,7 @@ module.exports = function (shipit) {
             .then(checkout)
             .then(pull)
             .then(composerInstall)
+            .then(updateBootstrapFile)
             .then(updateDefinesFile)
             .then(deleteCache)
             .then(restartPhpFpm);
