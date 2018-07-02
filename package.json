@@ -1,0 +1,27 @@
+{
+  "name": "kientrucmo",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app) [![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)",
+  "main": "shipitfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gloryit/pah.com.vn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gloryit/pah.com.vn/issues"
+  },
+  "homepage": "https://github.com/gloryit/pah.com.vn#readme",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "chalk": "^2.4.1",
+    "commander": "^2.16.0"
+  }
+}

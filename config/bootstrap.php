@@ -18,6 +18,7 @@
  */
 require __DIR__ . '/paths.php';
 require __DIR__ . '/defines.php';
+require __DIR__ . '/functions.php';
 
 /*
  * Bootstrap CakePHP.
@@ -30,19 +31,17 @@ require __DIR__ . '/defines.php';
  */
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
 
+use App\Error\AppErrorHandler;
 use Cake\Cache\Cache;
 use Cake\Console\ConsoleErrorHandler;
-use Cake\Core\App;
 use Cake\Core\Configure;
 use Cake\Core\Configure\Engine\PhpConfig;
 use Cake\Core\Plugin;
 use Cake\Database\Type;
 use Cake\Datasource\ConnectionManager;
-use Cake\Error\ErrorHandler;
 use Cake\Http\ServerRequest;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
-use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 
 /**
@@ -114,7 +113,7 @@ $isCli = PHP_SAPI === 'cli';
 if ($isCli) {
     (new ConsoleErrorHandler(Configure::read('Error')))->register();
 } else {
-    (new ErrorHandler(Configure::read('Error')))->register();
+    (new AppErrorHandler(Configure::read('Error')))->register();
 }
 
 /*
@@ -215,3 +214,5 @@ Type::build('timestamp')
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
+
+Plugin::load('PahAdmin', ['bootstrap' => false, 'routes' => true]);
