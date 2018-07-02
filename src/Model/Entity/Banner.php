@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  * @property string $title
  * @property string $slug
  * @property string $uri
- * @property int $delete_flag
  * @property int $is_active
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -33,7 +32,6 @@ class Banner extends Entity
         'title' => true,
         'slug' => true,
         'uri' => true,
-        'delete_flag' => true,
         'is_active' => true,
         'created' => true,
         'modified' => true

@@ -26,20 +26,18 @@ class NewsController extends AppController {
         /** @var \App\Model\Entity\Post[] $posts */
         $posts = $this->Posts->find()
             ->where([
-                'group_id' => 4,
-                'delete_flag' => false
+                'menu_id' => 4,
             ])
             ->toArray();
 
-        /** @var \App\Model\Entity\Group $group */
-        $group = $this->Groups->find()
+        /** @var \App\Model\Entity\Menu $menu */
+        $menu = $this->Menus->find()
             ->where([
                 'id' => 4,
-                'delete_flag' => false
             ])
             ->first();
 
-        $this->set(compact('posts', 'group'));
+        $this->set(compact('posts', 'menu'));
     }
 
     /**
@@ -51,18 +49,16 @@ class NewsController extends AppController {
         $post = $this->Posts->find()
             ->where([
                 'slug' => $slug,
-                'delete_flag' => false
             ])
             ->firstOrFail();
 
-        /** @var \App\Model\Entity\Group $group */
-        $group = $this->Groups->find()
+        /** @var \App\Model\Entity\Menu $menu */
+        $menu = $this->Menus->find()
             ->where([
-                'id' => $post->group_id,
-                'delete_flag' => false
+                'id' => $post->menu_id,
             ])
             ->first();
 
-        $this->set(compact('post', 'group'));
+        $this->set(compact('post', 'menu'));
     }
 }

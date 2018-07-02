@@ -22,9 +22,6 @@ class ContactsController extends AppController {
         $this->loadModel('Contacts');
 
         $contact = $this->Contacts->find()
-            ->where([
-                'delete_flag' => false
-            ])
             ->firstOrFail();
 
         $this->set(compact('contact'));

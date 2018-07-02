@@ -25,20 +25,18 @@ class IntroducesController extends AppController {
     public function index() {
         $posts = $this->Posts->find()
             ->where([
-                'group_id' => 1,
-                'delete_flag' => false
+                'menu_id' => 1,
             ])
             ->orderDesc('created')
             ->toArray();
 
-        $group = $this->Groups->find()
+        $menu = $this->Menus->find()
             ->where([
                 'id' => 3,
-                'delete_flag' => false
             ])
             ->firstOrFail();
 
-        $this->set(compact('posts', 'group'));
+        $this->set(compact('posts', 'menu'));
     }
 
     /**
@@ -50,19 +48,17 @@ class IntroducesController extends AppController {
         $post = $this->Posts->find()
             ->where([
                 'slug' => $slug,
-                'group_id' => 1,
-                'delete_flag' => false
+                'menu_id' => 1,
             ])
             ->first();
 
-        /** @var \App\Model\Entity\Group $group */
-        $group = $this->Groups->find()
+        /** @var \App\Model\Entity\Menu $menu */
+        $menu = $this->Menus->find()
             ->where([
                 'id' => 1,
-                'delete_flag' => false
             ])
             ->first();
 
-        $this->set(compact('post', 'group'));
+        $this->set(compact('post', 'menu'));
     }
 }

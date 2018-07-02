@@ -95,12 +95,9 @@
                                     </ul>
                                 <?php endif; ?>
                             </li>
-                            <li class="item-104<?= ($isPage === 'highlights') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:highlights']) ?>" >DỰ ÁN TIÊU BIỂU</a></li>
-                            <li class="item-105<?= ($isPage === 'news') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:news']) ?>" >TIN TỨC</a></li>
-<!--                            <li class="item-140"><a href="/vi/doi-tac.html" >ĐỐI TÁC</a></li>-->
-                            <li class="item-108<?= ($isPage === 'customers') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:customers']) ?>" >KHÁCH HÀNG</a></li>
-                            <li class="item-106<?= ($isPage === 'recruitments') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:recruitments']) ?>" >TUYỂN DỤNG</a></li>
-                            <li class="item-107<?= ($isPage === 'contacts') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:contact']) ?>" >LIÊN HỆ</a></li>
+                            <li class="item-104 deeper parent<?= ($isPage === 'highlights') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:highlights']) ?>" >DỰ ÁN TIÊU BIỂU</a></li>
+                            <li class="item-105 deeper parent<?= ($isPage === 'news') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:news']) ?>" >TIN TỨC</a></li>
+                            <li class="item-107 deeper parent<?= ($isPage === 'contacts') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:contact']) ?>" >LIÊN HỆ</a></li>
                         </ul>
                         <script type="text/javascript">
                             jQuery(document).ready(function(){

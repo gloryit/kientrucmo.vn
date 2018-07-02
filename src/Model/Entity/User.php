@@ -14,7 +14,6 @@ use Cake\ORM\Entity;
  * @property string $first_name
  * @property string $last_name
  * @property int $dsp_order
- * @property int $delete_flag
  * @property int $is_active
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -40,7 +39,6 @@ class User extends Entity
         'first_name' => true,
         'last_name' => true,
         'dsp_order' => true,
-        'delete_flag' => true,
         'is_active' => true,
         'created' => true,
         'modified' => true

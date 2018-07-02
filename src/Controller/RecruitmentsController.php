@@ -15,7 +15,7 @@ class RecruitmentsController extends AppController {
         parent::initialize();
         $this->set('isPage', 'recruitments');
         $this->loadModel('Posts');
-        $this->loadModel('Groups');
+        $this->loadModel('Menus');
     }
 
     public function index() {
@@ -23,20 +23,18 @@ class RecruitmentsController extends AppController {
         /** @var \App\Model\Entity\Post $post */
         $post = $this->Posts->find()
             ->where([
-                'group_id' => 7,
-                'delete_flag' => false
+                'menu_id' => 7,
             ])
             ->first();
 
-        /** @var \App\Model\Entity\Group $group */
-        $group = $this->Groups->find()
+        /** @var \App\Model\Entity\Menu $menu */
+        $menu = $this->Menus->find()
             ->where([
-                'id' => $post->group_id,
-                'delete_flag' => false
+                'id' => $post->menu_id,
             ])
             ->first();
 
-        $this->set(compact('post', 'group'));
+        $this->set(compact('post', 'menu'));
     }
 
 }

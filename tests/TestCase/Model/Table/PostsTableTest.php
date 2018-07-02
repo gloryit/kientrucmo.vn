@@ -25,7 +25,7 @@ class PostsTableTest extends TestCase
      */
     public $fixtures = [
         'app.posts',
-        'app.groups'
+        'app.menus'
     ];
 
     /**
@@ -36,8 +36,8 @@ class PostsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Posts') ? [] : ['className' => PostsTable::class];
-        $this->Posts = TableRegistry::get('Posts', $config);
+        $config = TableRegistry::getTableLocator()->exists('Posts') ? [] : ['className' => PostsTable::class];
+        $this->Posts = TableRegistry::getTableLocator()->get('Posts', $config);
     }
 
     /**

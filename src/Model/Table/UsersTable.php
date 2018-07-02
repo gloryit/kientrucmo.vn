@@ -1,7 +1,6 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -70,10 +69,6 @@ class UsersTable extends Table
             ->integer('dsp_order')
             ->requirePresence('dsp_order', 'create')
             ->notEmpty('dsp_order');
-
-        $validator
-            ->requirePresence('delete_flag', 'create')
-            ->notEmpty('delete_flag');
 
         $validator
             ->requirePresence('is_active', 'create')

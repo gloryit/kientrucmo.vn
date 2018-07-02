@@ -17,7 +17,6 @@ use Cake\ORM\Entity;
  * @property string $email
  * @property string $website
  * @property string $hotline
- * @property int $delete_flag
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -46,7 +45,6 @@ class Contact extends Entity
         'email' => true,
         'website' => true,
         'hotline' => true,
-        'delete_flag' => true,
         'created' => true,
         'modified' => true
     ];

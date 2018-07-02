@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="clearfix"></div>
                         <div class="col-md-12 text-right">
-                            <a href="<?= $this->Url->build(['controller' => 'Groups', 'action' => 'edit', 'plugin' => 'PahAdmin']) ?>"
+                            <a href="<?= $this->Url->build(['controller' => 'Menus', 'action' => 'edit', 'plugin' => 'PahAdmin']) ?>"
                                id="s_reset" type="submit"
                                class="btn btn-primary">+ Create New Group</a>
                         </div>
@@ -84,7 +84,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var $datatables = $('#toppageLogo_table');
-        var base_url = "<?= $this->Url->build(['plugin' => 'PahAdmin', 'controller' => 'Groups', 'action' => 'index']) ?>/";
+        var base_url = "<?= $this->Url->build(['plugin' => 'PahAdmin', 'controller' => 'Menus', 'action' => 'index']) ?>/";
         var datatables_config = {
             "dom": '<"top">rt<"bottom"><"clear">',
             "ajax": {

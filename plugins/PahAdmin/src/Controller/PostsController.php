@@ -51,7 +51,6 @@ class PostsController extends AdminController
         $posts_query->orderDesc('created')
             ->where([
                 'title LIKE' => '%' . $params['keyword'] . '%',
-                'delete_flag' => 0
             ])
             ->limit($params['length'])
             ->offset($params['start']);
@@ -74,9 +73,7 @@ class PostsController extends AdminController
                 ->where(['id' => intval($id)])
                 ->firstOrFail();
 
-            $posts->delete_flag = 1;
-
-            if ($this->Posts->save($posts)) {
+            if ($this->Posts->delete($posts)) {
                 $this->response = $this->response->withStringBody(json_encode([
                     'status' => 200
                 ]));
@@ -114,8 +111,8 @@ class PostsController extends AdminController
             $validator = new Validator();
 
             $validator
-                ->requirePresence('group_id')
-                ->notEmpty('group_id')
+                ->requirePresence('menu_id')
+                ->notEmpty('menu_id')
                 ->requirePresence('is_active')
                 ->notEmpty('is_active')
                 ->requirePresence('dsp_order')
@@ -136,7 +133,7 @@ class PostsController extends AdminController
             }
 
             $posts->uri = $data['image_uri'];
-            $posts->group_id = $data['group_id'];
+            $posts->menu_id = $data['menu_id'];
             $posts->title = $data['title'];
             $posts->slug = StringAPI::convertToAscii($data['title']);
             $posts->header = $data['header'];

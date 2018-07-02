@@ -47,7 +47,6 @@ class SlidesController extends AdminController
             ])
             ->where([
                 'title LIKE' => '%' . $params['keyword'] . '%',
-                'delete_flag' => 0
             ])
             ->limit($params['length'])
             ->offset($params['start']);
@@ -70,9 +69,7 @@ class SlidesController extends AdminController
                 ->where(['id' => intval($id)])
                 ->firstOrFail();
 
-            $slide->delete_flag = 1;
-
-            if ($this->Slides->save($slide)) {
+            if ($this->Slides->delete($slide)) {
                 $this->response = $this->response->withStringBody(json_encode([
                     'status' => 200
                 ]));

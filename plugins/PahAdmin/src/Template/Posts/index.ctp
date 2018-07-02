@@ -118,7 +118,7 @@
                 },
                 {
                     "targets": 3,
-                    "data": 'group_id',
+                    "data": 'menu_id',
                     "render": function (data) {
                         var index = {
                             1: 'Giới thiệu',

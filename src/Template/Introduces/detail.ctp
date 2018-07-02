@@ -6,7 +6,7 @@
  * Time: 10:18 PM
  *
  * @var \App\Model\Entity\Post $post
- * @var \App\Model\Entity\Group $group
+ * @var \App\Model\Entity\Menu $menu
  * @var \App\View\AppView $this
  */
 ?>

@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  * @property string $uri
  * @property string $title
  * @property string $slug
- * @property int $delete_flag
  * @property int $is_active
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -33,7 +32,6 @@ class Slide extends Entity
         'uri' => true,
         'title' => true,
         'slug' => true,
-        'delete_flag' => true,
         'is_active' => true,
         'created' => true,
         'modified' => true

@@ -12,7 +12,6 @@ use Cake\ORM\Entity;
  * @property string $lang_en
  * @property string $lang_vi
  * @property int $dsp_order
- * @property int $delete_flag
  * @property int $is_active
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
@@ -35,7 +34,6 @@ class Translate extends Entity
         'lang_en' => true,
         'lang_vi' => true,
         'dsp_order' => true,
-        'delete_flag' => true,
         'is_active' => true,
         'created' => true,
         'modified' => true

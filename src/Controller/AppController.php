@@ -24,7 +24,7 @@ use Cake\Event\Event;
  * will inherit them.
  *
  * @property \App\Model\Table\PostsTable $Posts
- * @property \App\Model\Table\GroupsTable $Groups
+ * @property \App\Model\Table\MenusTable $Menus
  * @property \App\Model\Table\ContactsTable $Contacts
  * @property \App\Model\Table\SlidesTable $Slides
  * @property \App\Model\Table\WebsiteImagesTable $WebsiteImages
@@ -43,6 +43,7 @@ class AppController extends Controller
      * e.g. `$this->loadComponent('Security');`
      *
      * @return void
+     * @throws \Exception
      */
     public function initialize()
     {
@@ -58,7 +59,7 @@ class AppController extends Controller
         //$this->loadComponent('Security');
         $this->loadComponent('Csrf');
         $this->loadModel('Posts');
-        $this->loadModel('Groups');
+        $this->loadModel('Menus');
         $this->loadModel('Contacts');
         $this->loadModel('Slides');
         $this->loadModel('Banners');
@@ -66,23 +67,20 @@ class AppController extends Controller
         /** @var \App\Model\Entity\Post $app_introduces */
         $app_introduces = $this->Posts->find()
             ->where([
-                'group_id' => 1,
-                'delete_flag' => false
+                'menu_id' => 1,
             ])
             ->toArray();
 
         /** @var \App\Model\Entity\Post[] $app_services */
         $app_services = $this->Posts->find()
             ->where([
-                'group_id' => 2,
-                'delete_flag' => false
+                'menu_id' => 2,
             ])
             ->toArray();
 
         $app_highlights = $this->Posts->find()
             ->where([
-                'group_id' => 3,
-                'delete_flag' => false
+                'menu_id' => 3,
             ])
             ->orderDesc('created')
             ->limit(8)
@@ -90,28 +88,20 @@ class AppController extends Controller
         /** @var \App\Model\Entity\Post $app_introduce */
         $app_introduce = $this->Posts->find()
             ->where([
-                'group_id' => 1,
-                'delete_flag' => false
+                'menu_id' => 1,
             ])
             ->first();
 
         $app_contact = $this->Contacts->find()
-            ->where([
-                'delete_flag' => false
-            ])
             ->firstOrFail();
 
         $app_slides = $this->Slides->find()
-            ->where([
-                'delete_flag' => false
-            ])
             ->orderDesc('created')
             ->limit(6)
             ->toArray();
 
         $page_banner = $this->Banners->find()
             ->where([
-                'delete_flag' => false,
                 'id' => 2
             ])
             ->first();
@@ -131,10 +121,8 @@ class AppController extends Controller
      */
     protected function ajaxResponse($data)
     {
-        $this->response = $this->response->withType('application/json');
-        $this->response = $this->response->withStringBody($this->toJson($data));
-
-        return $this->response;
+        return $this->response->withType('application/json')
+            ->withStringBody($this->toJson($data));
     }
 
     /**

@@ -14,7 +14,6 @@ use Cake\ORM\Entity;
  * @property int $width
  * @property int $height
  * @property string $mine_type
- * @property int $delete_flag
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  */
@@ -38,7 +37,6 @@ class WebsiteImage extends Entity
         'width' => true,
         'height' => true,
         'mine_type' => true,
-        'delete_flag' => true,
         'created' => true,
         'modified' => true
     ];

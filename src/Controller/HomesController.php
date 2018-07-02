@@ -12,7 +12,7 @@ class HomesController extends AppController {
     public function initialize() {
         parent::initialize();
         $this->loadModel('Posts');
-        $this->loadModel('Groups');
+        $this->loadModel('Menus');
         $this->loadModel('Slides');
         $this->loadModel('Banners');
     }
@@ -21,24 +21,21 @@ class HomesController extends AppController {
         $tops = $this->Posts->find()
             ->order(['RAND()'])
             ->where([
-                'group_id' => 2,
-                'delete_flag' => false
+                'menu_id' => 2,
             ])
             ->limit(3)
             ->toArray();
 
         $news = $this->Posts->find()
             ->where([
-                'group_id' => 4,
-                'delete_flag' => false
+                'menu_id' => 4,
             ])
             ->orderDesc('created')
             ->toArray();
 
         $highlights = $this->Posts->find()
             ->where([
-                'group_id' => 3,
-                'delete_flag' => false
+                'menu_id' => 3,
             ])
             ->orderDesc('created')
             ->limit(6)
@@ -46,14 +43,12 @@ class HomesController extends AppController {
 
         $top_banner = $this->Banners->find()
             ->where([
-                'delete_flag' => false,
                 'id' => 1
             ])
             ->first();
 
         $page_banner = $this->Banners->find()
             ->where([
-                'delete_flag' => false,
                 'id' => 2
             ])
             ->first();

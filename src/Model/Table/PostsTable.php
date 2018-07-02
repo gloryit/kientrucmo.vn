@@ -1,25 +1,13 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Posts Model
- *
- * @property \App\Model\Table\GroupsTable|\Cake\ORM\Association\BelongsTo $Groups
- *
- * @method \App\Model\Entity\Post get($primaryKey, $options = [])
- * @method \App\Model\Entity\Post newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Post[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Post|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Post patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Post[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Post findOrCreate($search, callable $callback = null, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * Class PostsTable
+ * @package App\Model\Table
  */
 class PostsTable extends Table
 {
@@ -40,8 +28,8 @@ class PostsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Groups', [
-            'foreignKey' => 'group_id',
+        $this->belongsTo('Menus', [
+            'foreignKey' => 'menu_id',
             'joinType' => 'INNER'
         ]);
     }
@@ -65,7 +53,6 @@ class PostsTable extends Table
 
         $validator
             ->scalar('title')
-            ->maxLength('title', 255)
             ->allowEmpty('title');
 
         $validator
@@ -85,10 +72,6 @@ class PostsTable extends Table
             ->integer('dsp_order')
             ->requirePresence('dsp_order', 'create')
             ->notEmpty('dsp_order');
-
-        $validator
-            ->requirePresence('delete_flag', 'create')
-            ->notEmpty('delete_flag');
 
         $validator
             ->requirePresence('is_active', 'create')
@@ -111,7 +94,7 @@ class PostsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['group_id'], 'Groups'));
+        $rules->add($rules->existsIn(['menu_id'], 'Menus'));
 
         return $rules;
     }

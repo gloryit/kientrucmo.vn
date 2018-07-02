@@ -22,20 +22,18 @@ class ServicesController extends AppController {
     public function index() {
         $posts = $this->Posts->find()
             ->where([
-                'group_id' => 2,
-                'delete_flag' => false
+                'menu_id' => 2,
             ])
             ->orderDesc('created')
             ->toArray();
 
-        $group = $this->Groups->find()
+        $menu = $this->Menus->find()
             ->where([
                 'id' => 2,
-                'delete_flag' => false
             ])
             ->firstOrFail();
 
-        $this->set(compact('posts', 'group'));
+        $this->set(compact('posts', 'menu'));
     }
 
     /**
@@ -46,28 +44,25 @@ class ServicesController extends AppController {
         $post = $this->Posts->find()
             ->where([
                 'slug' => $slug,
-                'group_id' => 2,
-                'delete_flag' => false
+                'menu_id' => 2,
             ])
             ->first();
 
-        /** @var \App\Model\Entity\Group $group */
-        $group = $this->Groups->find()
+        /** @var \App\Model\Entity\Menu $menu */
+        $menu = $this->Menus->find()
             ->where([
-                'id' => $post->group_id,
-                'delete_flag' => false
+                'id' => $post->menu_id,
             ])
             ->first();
 
         $any = $this->Posts->find()
             ->where([
                 'slug !=' => $slug,
-                'group_id' => 2,
-                'delete_flag' => false
+                'menu_id' => 2,
             ])
             ->toArray();
 
-        $this->set(compact('post', 'group', 'any'));
+        $this->set(compact('post', 'menu', 'any'));
     }
 
 }

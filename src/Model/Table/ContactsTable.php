@@ -1,23 +1,13 @@
 <?php
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Contacts Model
- *
- * @method \App\Model\Entity\Contact get($primaryKey, $options = [])
- * @method \App\Model\Entity\Contact newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Contact[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Contact|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Contact patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Contact[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Contact findOrCreate($search, callable $callback = null, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * Class ContactsTable
+ * @package App\Model\Table
  */
 class ContactsTable extends Table
 {
@@ -99,10 +89,6 @@ class ContactsTable extends Table
             ->scalar('hotline')
             ->maxLength('hotline', 255)
             ->allowEmpty('hotline');
-
-        $validator
-            ->requirePresence('delete_flag', 'create')
-            ->notEmpty('delete_flag');
 
         return $validator;
     }
