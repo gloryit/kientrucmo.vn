@@ -165,7 +165,7 @@ $flash_error_key = '1234';
                                         <?= $this->Form->checkbox('is_active',[
                                             'class' => 'js-switch',
                                             'data-parsley-required' => 'true',
-                                            'checked' => ($posts->content) ?? false,
+                                            'checked' => $posts->is_active ? true : false,
                                             'label' => false
                                         ]) ?>
                                     </div>
@@ -175,7 +175,7 @@ $flash_error_key = '1234';
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <a href="<?= $this->Url->build(['controller'=>'Posts','action'=>'index','plugin'=>'PahAdmin']) ?>" class="btn btn-default">
+                                    <a href="<?= $this->Url->build(['controller' => 'Posts', 'action' => 'index', 'plugin' => 'PahAdmin']) ?>" class="btn btn-default">
                                         <i class="fa fa-reply" aria-hidden="true"></i> Back to list
                                     </a>
                                     <button type="submit" class="btn btn-success">Save</button>

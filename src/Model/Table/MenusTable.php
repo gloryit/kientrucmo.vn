@@ -1,12 +1,29 @@
 <?php
 namespace App\Model\Table;
 
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Class MenusTable
- * @package App\Model\Table
+ * Menus Model
+ *
+ * @property \App\Model\Table\MenusTable|\Cake\ORM\Association\BelongsTo $ParentMenus
+ * @property \App\Model\Table\MenusTable|\Cake\ORM\Association\HasMany $ChildMenus
+ * @property \App\Model\Table\PostsTable|\Cake\ORM\Association\HasMany $Posts
+ *
+ * @method \App\Model\Entity\Menu get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Menu newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Menu[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Menu|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Menu|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Menu patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Menu[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Menu findOrCreate($search, callable $callback = null, $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \Cake\ORM\Behavior\TreeBehavior
  */
 class MenusTable extends Table
 {
@@ -22,11 +39,20 @@ class MenusTable extends Table
         parent::initialize($config);
 
         $this->setTable('menus');
-        $this->setDisplayField('title');
+        $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Tree');
 
+        $this->belongsTo('ParentMenus', [
+            'className' => 'Menus',
+            'foreignKey' => 'parent_id'
+        ]);
+        $this->hasMany('ChildMenus', [
+            'className' => 'Menus',
+            'foreignKey' => 'parent_id'
+        ]);
         $this->hasMany('Posts', [
             'foreignKey' => 'menu_id'
         ]);
@@ -45,24 +71,40 @@ class MenusTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->scalar('title')
-            ->maxLength('title', 255)
-            ->allowEmpty('title');
+            ->scalar('name')
+            ->maxLength('name', 100)
+            ->requirePresence('name', 'create')
+            ->notEmpty('name');
 
         $validator
             ->scalar('slug')
-            ->maxLength('slug', 255)
+            ->maxLength('slug', 100)
             ->allowEmpty('slug');
 
         $validator
-            ->integer('dsp_order')
-            ->requirePresence('dsp_order', 'create')
-            ->notEmpty('dsp_order');
+            ->scalar('description')
+            ->maxLength('description', 255)
+            ->allowEmpty('description');
 
         $validator
+            ->integer('is_active')
             ->requirePresence('is_active', 'create')
             ->notEmpty('is_active');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules)
+    {
+        $rules->add($rules->existsIn(['parent_id'], 'ParentMenus'));
+
+        return $rules;
     }
 }

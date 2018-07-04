@@ -1,0 +1,6 @@
+bin/cake bake migration CreateMenus parent_id:integer lft:integer[10] rght:integer[10] name:string[100] slug:string[100] description:string is_active:integer[3] created modified
+bin/cake migrations migrate
+
+
+ALTER DATABASE kientrucmo CHARACTER SET utf8 COLLATE utf8_general_ci;
+ALTER TABLE categories CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
