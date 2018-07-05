@@ -4,6 +4,10 @@
  * @var \App\Model\Entity\Menu $menu
  * @var \App\Model\Entity\Menu $parentCategories
  */
+$option = [
+    '' => 'No parent menu',
+];
+$option += $parentCategories;
 ?>
 <div class="block">
     <div class="page-title">
@@ -40,11 +44,8 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="company-id">Menu Level:</label>
                                 <div class="col-sm-8">
-                                    <?= $this->Form->select('parent_id', [
-                                        $parentCategories,
-                                        'empty' => 'No parent menu'
-                                    ], [
-                                        'value' => ($menu->parent_id) ?? '',
+                                    <?= $this->Form->select('parent_id', $option, [
+                                        'value' => $menu->parent_id ?? '',
                                         'class' => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
@@ -94,8 +95,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <input type="checkbox" class="js-switch" checked />
 
                             <div class="form-group">
                                 <div class="col-md-10 col-sm-10 col-xs-12 text-right">
