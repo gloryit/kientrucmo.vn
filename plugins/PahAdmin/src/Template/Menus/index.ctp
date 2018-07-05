@@ -19,8 +19,8 @@
     <div class="page-title">
         <div class="title_left">
             <h3>
-                <a href="<?= $this->Url->build(array('controller' => 'Posts', 'action' => 'index', 'plugin' => 'PahAdmin')) ?>">
-                    POSTS
+                <a href="<?= $this->Url->build(array('controller' => 'Menus', 'action' => 'index', 'plugin' => 'PahAdmin')) ?>">
+                    MENUS
                 </a>
             </h3>
         </div>
@@ -35,7 +35,7 @@
                         <div class="col-md-12 text-right">
                             <a href="<?= $this->Url->build(['controller' => 'Menus', 'action' => 'edit', 'plugin' => 'PahAdmin']) ?>"
                                id="s_reset" type="submit"
-                               class="btn btn-primary">+ Create New Group</a>
+                               class="btn btn-primary">+ Create New Menu</a>
                         </div>
                         <div class="cleafix"></div>
                         <div class="col-md-12">
@@ -60,33 +60,71 @@
         </div>
     </div>
 </div>
+
 <?php $this->appendStylesTop() ?>
-<link href="/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css?v=<?= ASSETS_VERSION ?>"
-      rel="stylesheet">
-<link href="/gentelella/vendors/switchery/dist/switchery.min.css?v=<?= ASSETS_VERSION ?>" rel="stylesheet">
-<link href="/libs/jquery-ui/themes/base/jquery-ui.min.css?v=<?= ASSETS_VERSION ?>" rel="stylesheet">
+<link href="/gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css?v=<?= ASSETS_VERSION ?>" rel="stylesheet">
 <style type="text/css">
-    .switchery {
-        margin-top: 7px;
+    .switch {
+        position: absolute;
+        display: inline-block;
         width: 32px;
         height: 20px;
+        vertical-align: middle;
+        bottom: 8px;
+        margin: 0 auto;
     }
-    .switchery>small {
-        width: 20px;
+
+    .switch input {display:none;}
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
         height: 20px;
+        width: 20px;
+        left: 0;
+        bottom: 0;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
     }
-    .ui-autocomplete {
-        max-width: 200px;
-        list-style: none;
-        background: white;
-        margin: 0;
-        padding: 0;
+
+    input:checked + .slider {
+        background-color: rgb(38, 185, 154);
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px rgb(38, 185, 154);
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(12px);
+        -ms-transform: translateX(12px);
+        transform: translateX(12px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+    .slider.round:before {
+        border-radius: 50%;
     }
 </style>
 <?php $this->end() ?>
 <?php $this->appendScriptsBottom() ?>
-<script src="/gentelella/vendors/switchery/dist/switchery.min.js?v=<?= ASSETS_VERSION ?>"></script>
-<script src="/libs/jquery-ui/jquery-ui.min.js?v=<?= ASSETS_VERSION ?>" type="text/javascript"></script>
 <script type="text/javascript" src="/gentelella/vendors/datatables.net/js/jquery.dataTables.min.js?v=<?= ASSETS_VERSION ?>"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -99,19 +137,18 @@
             "rowId": 'id',
             "pageLength": 10,
             "serverSide": true,
-            // "order": [[0, "desc"]],
             "columnDefs": [
                 {
                     "targets": 0,
                     "data": 'id',
-                    "searchable": false,
+                    "searchable": true,
                     "orderable": true
                 },
                 {
                     "targets": 1,
                     "data": 'name',
                     "searchable": true,
-                    "orderable": false
+                    "orderable": true
                 },
                 {
                     "targets": 2,
@@ -129,7 +166,16 @@
                     "targets": 4,
                     "data": 'is_active',
                     'render': function (data) {
-                        return '<input type="checkbox" class="js-switch" checked />'
+                        if (data) {
+                            return "<label class=\"switch\">\n" +
+                                "  <input type=\"checkbox\" checked>\n" +
+                                "  <span class=\"slider round\"></span>\n" +
+                                "</label>"
+                        }
+                        return "<label class=\"switch\">\n" +
+                            "  <input type=\"checkbox\">\n" +
+                            "  <span class=\"slider round\"></span>\n" +
+                            "</label>"
                     },
                     "searchable": false,
                     "orderable": true
@@ -137,7 +183,7 @@
                 {
                     "targets": 5,
                     "data": 'created',
-                    "searchable": false,
+                    "searchable": true,
                     "orderable": true
                 },
                 {
