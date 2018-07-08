@@ -3,11 +3,8 @@
  * @var \PahAdmin\View\AdminView $this
  * @var \App\Model\Entity\Menu $menu
  * @var \App\Model\Entity\Menu $parentCategories
+ * @var string $option
  */
-$option = [
-    '' => 'No parent menu',
-];
-$option += $parentCategories;
 ?>
 <div class="block">
     <div class="page-title">
@@ -42,12 +39,12 @@ $option += $parentCategories;
                             <?php endif; ?>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="company-id">Menu Level:</label>
+                                <label class="control-label col-sm-2" for="company-id">Level:</label>
                                 <div class="col-sm-8">
                                     <?= $this->Form->select('parent_id', $option, [
                                         'value' => $menu->parent_id ?? '',
                                         'class' => 'form-control',
-                                        'data-parsley-required' => 'true',
+                                        'data-parsley-required' => 'false',
                                         'data-parsley-trigger' => 'change',
                                         'label' => false
                                     ]) ?>
@@ -55,7 +52,7 @@ $option += $parentCategories;
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-xs-2">Menus Name:</label>
+                                <label class="control-label col-xs-2">Name:</label>
                                 <div class="col-xs-8">
                                     <?= $this->Form->control('name', [
                                         'type'      => 'text',
@@ -69,7 +66,7 @@ $option += $parentCategories;
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="pwd">Display order:</label>
+                                <label class="control-label col-sm-2" for="pwd">Description:</label>
                                 <div class="col-sm-8">
                                     <?= $this->Form->control('description', [
                                         'type'      => 'text',

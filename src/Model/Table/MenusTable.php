@@ -7,20 +7,9 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Menus Model
- *
- * @property \App\Model\Table\MenusTable|\Cake\ORM\Association\BelongsTo $ParentMenus
- * @property \App\Model\Table\MenusTable|\Cake\ORM\Association\HasMany $ChildMenus
- * @property \App\Model\Table\PostsTable|\Cake\ORM\Association\HasMany $Posts
- *
- * @method \App\Model\Entity\Menu get($primaryKey, $options = [])
- * @method \App\Model\Entity\Menu newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Menu[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Menu|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Menu|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Menu patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Menu[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Menu findOrCreate($search, callable $callback = null, $options = [])
+ * Class MenusTable
+ * @property \Cake\ORM\Association ParentMenus
+ * @package App\Model\Table
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  * @mixin \Cake\ORM\Behavior\TreeBehavior

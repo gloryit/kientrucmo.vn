@@ -3,6 +3,7 @@
  * @var \PahAdmin\View\AdminView $this
  * @var \App\Model\Entity\Post $posts
  * @var string $flash_error_key
+ * @var string $option
  */
 $flash_error_key = '1234';
 ?>
@@ -48,18 +49,10 @@ $flash_error_key = '1234';
                             <?php endif; ?>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="company-id">Group Name:</label>
+                                <label class="control-label col-sm-2" for="company-id">Level:</label>
                                 <div class="col-sm-8">
-                                    <?= $this->Form->select('menu_id',[
-                                        '1' => 'Giới thiệu',
-                                        '2' => 'Dịch vụ',
-                                        '3' => 'Dự án tiêu biểu',
-                                        '4' => 'Tin tức',
-                                        '5' => 'Đối tác',
-                                        '6' => 'Khách hàng',
-                                        '7' => 'Tuyển dụng'
-                                    ], [
-                                        'value' => !empty($posts->menu_id) ? h($posts->menu_id) : '',
+                                    <?= $this->Form->select('menu_id', $option, [
+                                        'value' => $posts->menu_id ?? '',
                                         'class' => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
@@ -67,6 +60,7 @@ $flash_error_key = '1234';
                                     ]) ?>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label class="control-label col-xs-2">Post Title:</label>
                                 <div class="col-xs-8">
@@ -165,7 +159,7 @@ $flash_error_key = '1234';
                                         <?= $this->Form->checkbox('is_active',[
                                             'class' => 'js-switch',
                                             'data-parsley-required' => 'true',
-                                            'checked' => $posts->is_active ? true : false,
+                                            'checked' => $posts->is_active ?? true,
                                             'label' => false
                                         ]) ?>
                                     </div>

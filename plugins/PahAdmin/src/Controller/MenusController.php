@@ -1,9 +1,8 @@
 <?php
+
 namespace PahAdmin\Controller;
 
 use App\Controller\API\StringAPI;
-use Cake\Network\Exception\NotFoundException;
-use Cake\Validation\Validator;
 
 /**
  * Class GroupController
@@ -65,37 +64,16 @@ class MenusController extends AdminController
             $menu = $this->Menus->newEntity();
         }
 
-        $parentCategories = $this->Menus->find('treeList', [
-            'keyPath' => 'id',
-            'valuePath' => 'name',
-            'spacer' => ' * '
-        ])
-            ->orderAsc('lft')
-            ->toArray();
-
-        $this->set(compact('menu', 'parentCategories'));
+        $this->set(compact('menu'));
 
         if($this->request->is(['post', 'put', 'patch'])) {
             $data = $this->request->getData();
 
-            // Data processing
-            $validator = new Validator();
-
-            $validator
-                ->requirePresence('child_menu')
-                ->notEmpty('child_menu');
-
-            $validator
-                ->requirePresence('title')
-                ->notEmpty('title');
-
-            $errors = $validator->errors($this->request->getData());
-
-            if($errors) {
-                throw new NotFoundException('Invalid request!');
+            if ($data['parent_id'] != null) {
+                $menu->parent_id = $data['parent_id'];
             }
-            $menu->parent_id = $data['parent_id'];
-            $menu->name = $data['title'];
+            $menu->name = $data['name'];
+            $menu->description = $data['description'];
             $menu->slug = StringAPI::convertToAscii($data['name']);
             $menu->is_active = $data['is_active'];
 

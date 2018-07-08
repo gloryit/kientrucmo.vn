@@ -43,10 +43,11 @@
                                 <thead>
                                 <tr>
                                     <th class="column-title">ID</th>
+                                    <th>Parent</th>
                                     <th>Name</th>
                                     <th>Slug</th>
                                     <th>Description</th>
-                                    <th>Active</th>
+<!--                                    <th>Active</th>-->
                                     <th>Created</th>
                                     <th>Action</th>
                                 </tr>
@@ -146,40 +147,46 @@
                 },
                 {
                     "targets": 1,
-                    "data": 'name',
+                    "data": 'parent_id',
                     "searchable": true,
                     "orderable": true
                 },
                 {
                     "targets": 2,
-                    "data": 'slug',
+                    "data": 'name',
                     "searchable": true,
                     "orderable": true
                 },
                 {
                     "targets": 3,
-                    "data": 'description',
+                    "data": 'slug',
                     "searchable": true,
                     "orderable": true
                 },
                 {
                     "targets": 4,
-                    "data": 'is_active',
-                    'render': function (data) {
-                        if (data) {
-                            return "<label class=\"switch\">\n" +
-                                "  <input type=\"checkbox\" checked>\n" +
-                                "  <span class=\"slider round\"></span>\n" +
-                                "</label>"
-                        }
-                        return "<label class=\"switch\">\n" +
-                            "  <input type=\"checkbox\">\n" +
-                            "  <span class=\"slider round\"></span>\n" +
-                            "</label>"
-                    },
-                    "searchable": false,
+                    "data": 'description',
+                    "searchable": true,
                     "orderable": true
                 },
+                // {
+                //     "targets": 4,
+                //     "data": 'is_active',
+                //     'render': function (data) {
+                //         if (data) {
+                //             return "<label class=\"switch\">\n" +
+                //                 "  <input type=\"checkbox\" checked>\n" +
+                //                 "  <span class=\"slider round\"></span>\n" +
+                //                 "</label>"
+                //         }
+                //         return "<label class=\"switch\">\n" +
+                //             "  <input type=\"checkbox\">\n" +
+                //             "  <span class=\"slider round\"></span>\n" +
+                //             "</label>"
+                //     },
+                //     "searchable": false,
+                //     "orderable": true
+                // },
                 {
                     "targets": 5,
                     "data": 'created',

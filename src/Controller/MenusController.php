@@ -48,12 +48,14 @@ class MenusController extends AppController
      * Add method
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+     * @throws \Aura\Intl\Exception
      */
     public function add()
     {
         $menu = $this->Menus->newEntity();
         if ($this->request->is('post')) {
             $menu = $this->Menus->patchEntity($menu, $this->request->getData());
+            dd($menu);
             if ($this->Menus->save($menu)) {
                 $this->Flash->success(__('The menu has been saved.'));
 
@@ -70,7 +72,7 @@ class MenusController extends AppController
      *
      * @param string|null $id Menu id.
      * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @throws \Aura\Intl\Exception
      */
     public function edit($id = null)
     {

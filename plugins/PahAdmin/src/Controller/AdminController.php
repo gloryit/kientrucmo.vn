@@ -54,6 +54,22 @@ class AdminController extends Controller
         ]);
 
         $this->loadModel('Menus');
+
+        $parentCategories = $this->Menus->find('treeList', [
+            'keyPath' => 'id',
+            'valuePath' => 'name',
+            'spacer' => ' * '
+        ])
+            ->orderAsc('lft')
+            ->toArray();
+
+        $option = [
+            '' => 'No parent menu',
+        ];
+        $option += $parentCategories;
+
+        $this->set(compact('option',  'parentCategories'));
+
     }
 
     /**
