@@ -24,9 +24,7 @@ class PostsController extends AdminController
 
     /**
      * @return void
-     * @throws \UnexpectedValueException
-     * @throws \InvalidArgumentException
-     * @throws \Cake\Datasource\Exception\MissingModelException
+     * @throws \Exception
      */
     public function initialize()
     {

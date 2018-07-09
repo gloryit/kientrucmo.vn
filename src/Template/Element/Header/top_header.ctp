@@ -10,10 +10,11 @@
  * @var \App\Model\Entity\Contact $app_contact
  * @var \App\Model\Entity\Slide[] $app_slides
  * @var \App\Model\Entity\Banner $page_banner
+ * @var \App\Model\Entity\Menu[] $menus
+ * @var \App\Model\Entity\Menu[] $sub_services
  * @var \App\View\AppView $this
  * @var string $isPage
  */
-
 ?>
     <div id="section15804a027854024"
      class="vtem-section section-topinfo bg-theme clearfix" style="background-color:rgba(255, 255, 255, 0); color:#EEEEEE;">
@@ -72,25 +73,15 @@
                 <div id="block14e52c68f0e7306" style="background-color:; color:#FFFFFF" class="vtem-block system widget-menu  col-md-9 vtem-menu col-sm-9 col-xs-3" data-vgrid="9">
                     <div class="vtem-block-inside clearfix">
                         <ul class="nav menu nav-pills vtem-menu" id="menu14e52c68f0e7306">
-                            <li class="item-101 default current<?= ($isPage === 'homes') ? ' active': '' ?>">
-                                <a href="/" class="text-uppercase">+ p a h</a>
-                            </li>
                             <li class="item-188 deeper parent<?= ($isPage === 'introduces') ? ' active': '' ?>">
-                                <span class="text-uppercase">GIỚI THIỆU</span>
-                                <?php if (!empty($app_introduces)): ?>
-                                    <ul class="nav-child unstyled small">
-                                        <?php foreach ($app_introduces as $introduce) :?>
-                                        <li class="item-<?= h($introduce->id) ?> text-uppercase"><a href="<?= $this->Url->build(['_name' => 'introduces:view', $introduce->slug]) ?>" ><?= h($introduce->title) ?></a></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                <?php endif; ?>
+                                <a href="<?= $this->Url->build(['_name' => 'app:introduces']) ?>" class="text-uppercase">GIỚI THIỆU</a>
                             </li>
                             <li class="item-103 deeper parent<?= ($isPage === 'services') ? ' active': '' ?>">
                                 <?php if (!empty($app_services)): ?>
-                                <span class="text-uppercase">DỊCH VỤ</span>
+                                <span class="text-uppercase">công trình thực tế</span>
                                     <ul class="nav-child unstyled small">
-                                        <?php foreach ($app_services as $service) :?>
-                                            <li class="item-<?= h($service->id) ?> text-uppercase"><a href="<?= $this->Url->build(['_name' => 'services:view', $service->slug]) ?>"><?= h($service->title) ?></a></li>
+                                        <?php foreach ($sub_services as $service) :?>
+                                            <li class="item-<?= h($service->id) ?> text-uppercase"><a href="<?= $this->Url->build(['_name' => 'services:view', strtolower($service->slug)]) ?>"><?= h($service->name) ?></a></li>
                                         <?php endforeach; ?>
                                     </ul>
                                 <?php endif; ?>

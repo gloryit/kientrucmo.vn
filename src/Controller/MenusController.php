@@ -55,7 +55,6 @@ class MenusController extends AppController
         $menu = $this->Menus->newEntity();
         if ($this->request->is('post')) {
             $menu = $this->Menus->patchEntity($menu, $this->request->getData());
-            dd($menu);
             if ($this->Menus->save($menu)) {
                 $this->Flash->success(__('The menu has been saved.'));
 

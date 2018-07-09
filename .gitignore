@@ -4,6 +4,7 @@
 /tmp
 /vendor
 /config/defines.php
+/webroot/upload
 node_modules/
 
 # OS generated files #

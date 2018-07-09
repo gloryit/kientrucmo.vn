@@ -208,7 +208,7 @@ class WebsiteImagesController extends AdminController {
                     }
                 }
 
-                $website_image->uri = $this->getImageUri($website_image->created, $website_image->name . '.' . $file_extension_map[$path_info['extension']]);
+                $website_image->uri = $this->getImageUri($website_image->created, $website_image->name . '.' . $file_extension_map[strtolower($path_info['extension'])]);
 
                 if ($this->WebsiteImages->save($website_image)) {
                     $this->loadComponent('PahAdmin.WebsiteImage');

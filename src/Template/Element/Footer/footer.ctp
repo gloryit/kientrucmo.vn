@@ -21,7 +21,7 @@
                         <h3 class="moduletable-title basic-title "><?= h($app_introduce->title) ?></h3>
                         <div class="moduletable-content basic-body">
                             <div class="custom"  >
-                                <p style="font-size: 17px; line-height: 22px; text-align: justify;"><a href="<?= $this->Url->build(['_name' => 'introduces:view', h($app_introduce->slug)]) ?>"><img src="<?= h($app_introduce->link_images) ?>" alt="slide1" style="border: 4px solid #ffffff; margin-bottom: 10px;" /></a><br /><?= h($app_introduce->header) ?><span style="color: #ffcc00;"><a href="<?= $this->Url->build(['_name' => 'introduces:view', h($app_introduce->slug)]) ?>" style="color: #ffcc00;">+ Đọc tiếp</a></span></p>
+                                <p style="font-size: 17px; line-height: 22px; text-align: justify;"><a href="<?= $this->Url->build(['_name' => 'introduces:view', h($app_introduce->slug)]) ?>"><img src="<?= h($app_introduce->uri) ?>" alt="slide1" style="border: 4px solid #ffffff; margin-bottom: 10px;" /></a><br /><?= h($app_introduce->header) ?><span style="color: #ffcc00;"><a href="<?= $this->Url->build(['_name' => 'introduces:view', h($app_introduce->slug)]) ?>" style="color: #ffcc00;">+ Đọc tiếp</a></span></p>
                             </div>
                         </div>
                     </div>

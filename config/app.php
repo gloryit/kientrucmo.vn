@@ -180,11 +180,11 @@ return [
         'default' => [
             'className' => 'Smtp',
             // The following keys are used in SMTP transports
-            'host' => EmailTransport['host'],
-            'port' => EmailTransport['port'],
-            'timeout' => EmailTransport['timeout'],
-            'username' => EmailTransport['username'],
-            'password' => EmailTransport['password'],
+            'host' => EMAIL_DEFAULT['host'],
+            'port' => EMAIL_DEFAULT['port'],
+            'timeout' => EMAIL_DEFAULT['timeout'],
+            'username' => EMAIL_DEFAULT['username'],
+            'password' => EMAIL_DEFAULT['password'],
             'client' => null,
             'tls' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),

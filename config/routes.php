@@ -63,7 +63,7 @@ Router::scope('/', ['_namePrefix' => 'app:'], function (RouteBuilder $routes) {
         '_name' => 'contact',
     ]);
 
-    $routes->connect('/gioi-thieu.html', ['controller' => 'Introduces', 'action' => 'index'], [
+    $routes->connect('/gioi-thieu.html', ['controller' => 'Introduces', 'action' => 'introduce'], [
         '_name' => 'introduces',
     ]);
 
@@ -106,7 +106,7 @@ Router::scope('/gioi-thieu', ['_namePrefix' => 'introduces:'], function ($routes
     ]);
 });
 
-Router::scope('/dich-vu', ['_namePrefix' => 'services:'], function ($routes) {
+Router::scope('/cong-trinh-thuc-te', ['_namePrefix' => 'services:'], function ($routes) {
     /** @var \Cake\Routing\RouteBuilder $routes */
     $routes->connect('/:slug.html', ['controller' => 'Services', 'action' => 'detail', 'prefix' => null], [
         'pass' => ['slug'],
