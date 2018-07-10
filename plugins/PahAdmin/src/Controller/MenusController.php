@@ -74,11 +74,25 @@ class MenusController extends AdminController
             }
             $menu->name = $data['name'];
             $menu->description = $data['description'];
-            $menu->slug = StringAPI::convertToAscii($data['name']);
+            $menu->slug = StringAPI::convertToAscii(strtolower($data['name']));
             $menu->is_active = $data['is_active'];
 
             if ($this->Menus->save($menu)) {
                 $this->Flash->success(__('The user has been saved.'), ['key' => 'menus_key']);
+
+                if ($menu->parent_id) {
+                    /** @var \App\Model\Entity\Menu $old_menu */
+                    $old_menu = $this->Menus->find()
+                        ->where([
+                            'id' => $menu->parent_id
+                        ])
+                        ->first();
+
+                    if ($old_menu) {
+                        $old_menu->level = true;
+                        $this->Menus->save($old_menu);
+                    }
+                }
 
                 return $this->redirect(['action' => 'index']);
             }

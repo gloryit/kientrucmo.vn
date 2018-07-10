@@ -118,6 +118,22 @@ class AppController extends Controller
         $this->set('description', '+ P A H chuyên thiết kế và thi công Nội thất Văn phòng, Showroom, Shop, Biệt thự, Căn hộ theo phong cách Scandinavia &amp; Minimalism / Our Experts in Scandinavia &amp; Minimalism Interior Design');
         $this->set('generator', 'CÔNG TY TNHH KIẾN TRÚC NỘI THẤT + P A H');
         $this->set('title', 'Thiết kế kiến trúc, nội thất... - + P A H');
+
+        $menus = $this->Menus->find()
+            ->contain('ParentMenus')
+            ->orderAsc('Menus.lft')
+            ->where('ParentMenus.id IS NULL')
+            ->toArray();
+
+        $child_menus = $this->Menus->find()
+            ->contain('ParentMenus')
+            ->orderAsc('Menus.lft')
+            ->where('ParentMenus.id IS NOT NULL')
+            ->toArray();
+
+//        dd($this->Menus->find('treeList')->orderAsc('Menus.lft')->toArray());
+
+        $this->set(compact('menus', 'child_menus'));
     }
 
     /**

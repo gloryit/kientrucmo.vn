@@ -10,8 +10,6 @@
  * @var \App\Model\Entity\Contact $app_contact
  * @var \App\Model\Entity\Slide[] $app_slides
  * @var \App\Model\Entity\Banner $page_banner
- * @var \App\Model\Entity\Menu[] $menus
- * @var \App\Model\Entity\Menu[] $sub_services
  * @var \App\View\AppView $this
  * @var string $isPage
  */
@@ -72,24 +70,7 @@
 
                 <div id="block14e52c68f0e7306" style="background-color:; color:#FFFFFF" class="vtem-block system widget-menu  col-md-9 vtem-menu col-sm-9 col-xs-3" data-vgrid="9">
                     <div class="vtem-block-inside clearfix">
-                        <ul class="nav menu nav-pills vtem-menu" id="menu14e52c68f0e7306">
-                            <li class="item-188 deeper parent<?= ($isPage === 'introduces') ? ' active': '' ?>">
-                                <a href="<?= $this->Url->build(['_name' => 'app:introduces']) ?>" class="text-uppercase">GIỚI THIỆU</a>
-                            </li>
-                            <li class="item-103 deeper parent<?= ($isPage === 'services') ? ' active': '' ?>">
-                                <?php if (!empty($app_services)): ?>
-                                <span class="text-uppercase">công trình thực tế</span>
-                                    <ul class="nav-child unstyled small">
-                                        <?php foreach ($sub_services as $service) :?>
-                                            <li class="item-<?= h($service->id) ?> text-uppercase"><a href="<?= $this->Url->build(['_name' => 'services:view', strtolower($service->slug)]) ?>"><?= h($service->name) ?></a></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                <?php endif; ?>
-                            </li>
-                            <li class="item-104 deeper parent<?= ($isPage === 'highlights') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:highlights']) ?>" >DỰ ÁN TIÊU BIỂU</a></li>
-                            <li class="item-105 deeper parent<?= ($isPage === 'news') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:news']) ?>" >TIN TỨC</a></li>
-                            <li class="item-107 deeper parent<?= ($isPage === 'contacts') ? ' active': '' ?>"><a href="<?= $this->Url->build(['_name' => 'app:contact']) ?>" >LIÊN HỆ</a></li>
-                        </ul>
+                        <?= $this->element('Menu/menu') ?>
                         <script type="text/javascript">
                             jQuery(document).ready(function(){
                                 jQuery("#menu14e52c68f0e7306").oMenu({
@@ -104,9 +85,7 @@
                     </div>
                 </div>
                 <?php if (!empty($app_slides)): ?>
-                    <div id="block1582babeb498723"
-                         style="background-color:rgba(255, 255, 255, 0); color:#333333"
-                         class="vtem-block extend widget-customhtml  col-md-12  hidden-tablet hidden-sm hidden-desktop hidden-md hidden-lg "  data-vgrid="12">
+                    <div id="block1582babeb498723" style="background-color:rgba(255, 255, 255, 0); color:#333333" class="vtem-block extend widget-customhtml  col-md-12  hidden-tablet hidden-sm hidden-desktop hidden-md hidden-lg "  data-vgrid="12">
                         <div class="vtem-block-inside clearfix">
                             <div class="custom-html-content clearfix">
                                 <?php foreach ($app_slides as $slide): ?>

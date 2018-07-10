@@ -10,6 +10,7 @@ use Cake\ORM\Entity;
  * @property int $parent_id
  * @property int $lft
  * @property int $rght
+ * @property int $level
  * @property string $name
  * @property string $slug
  * @property string $description
@@ -37,6 +38,7 @@ class Menu extends Entity
         'parent_id' => true,
         'lft' => true,
         'rght' => true,
+        'level' => true,
         'name' => true,
         'slug' => true,
         'description' => true,

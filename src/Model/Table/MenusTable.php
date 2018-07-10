@@ -71,6 +71,11 @@ class MenusTable extends Table
             ->allowEmpty('slug');
 
         $validator
+            ->scalar('level')
+            ->maxLength('level', 100)
+            ->allowEmpty('level');
+
+        $validator
             ->scalar('description')
             ->maxLength('description', 255)
             ->allowEmpty('description');
