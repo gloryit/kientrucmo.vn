@@ -7,9 +7,9 @@
 ?>
 <ul class="nav menu nav-pills vtem-menu" id="menu14e52c68f0e7306">
     <?php foreach ($menus as $menu) : ?>
-        <?php if (!$menu->parent_menu && $menu->level == 0): ?>
+        <?php if (!$menu->parent_menu && $menu->level === 0): ?>
             <li class="item-188 deeper parent">
-                <a href="#" class="text-uppercase"><?= $menu->name ?></a>
+                <a href="<?= $this->Url->build(h($menu->slug), true) ?>" class="text-uppercase"><?= h($menu->name) ?></a>
             </li>
         <?php else : ?>
             <li class="item-103 deeper parent">

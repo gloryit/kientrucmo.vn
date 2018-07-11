@@ -25,7 +25,7 @@
                     Chi tiết
                 </dt>
                 <dd class="createdby" itemprop="author" itemscope="" itemtype="https://schema.org/Person">Viết bởi <span itemprop="name"><?= h($post->author) ?></span></dd>
-                <dd class="category-name">Chuyên mục: <a href="<?= $this->Url->build(['_name' => 'app:' . $isPage]) ?>" itemprop="genre"><?= h($menu->title) ?></a></dd>
+                <dd class="category-name">Chuyên mục: <a href="<?= $this->Url->build(h($post->menu->slug), true) ?>" itemprop="genre"><?= h($post->menu->name) ?></a></dd>
                 <dd class="create">
                     <span class="icon-calendar" aria-hidden="true"></span>
                     <time datetime="<?= h($post->created) ?>" itemprop="dateCreated">Được viết: <?= h(date_format($post->created, 'd/m/Y')) ?></time>

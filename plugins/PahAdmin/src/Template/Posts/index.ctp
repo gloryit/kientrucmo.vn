@@ -43,7 +43,7 @@
                                     <th class="column-title">ID</th>
                                     <th>Image</th>
                                     <th>Title</th>
-                                    <th>Group</th>
+                                    <th>Menu</th>
                                     <th>Author</th>
                                     <th>Created</th>
                                     <th style="min-width: 75px">Action</th>
@@ -119,19 +119,19 @@
                 {
                     "targets": 3,
                     "data": 'menu_id',
-                    "render": function (data) {
-                        var index = {
-                            1: 'Giới thiệu',
-                            2: 'Dịch vụ',
-                            3: 'Dự án tiêu biểu',
-                            4: 'Tin tức',
-                            5: 'Đối tác',
-                            6: 'Khách hàng',
-                            7: 'Tuyển dụng',
-                            8: 'Liên hệ'
-                        };
-                        return index[data];
-                    },
+                    // "render": function (data) {
+                    //     var index = {
+                    //         1: 'Giới thiệu',
+                    //         2: 'Dịch vụ',
+                    //         3: 'Dự án tiêu biểu',
+                    //         4: 'Tin tức',
+                    //         5: 'Đối tác',
+                    //         6: 'Khách hàng',
+                    //         7: 'Tuyển dụng',
+                    //         8: 'Liên hệ'
+                    //     };
+                    //     return index[data];
+                    // },
                     "searchable": false,
                     "orderable": false
                 },

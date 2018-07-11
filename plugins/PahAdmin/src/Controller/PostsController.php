@@ -68,7 +68,7 @@ class PostsController extends AdminController
             $id = $this->request->getData('id');
             /** @var \App\Model\Entity\Post $posts */
             $posts = $this->Posts->find()
-                ->where(['id' => intval($id)])
+                ->where(['id' => (int) $id])
                 ->firstOrFail();
 
             if ($this->Posts->delete($posts)) {
@@ -88,6 +88,11 @@ class PostsController extends AdminController
         return $this->response;
     }
 
+    /**
+     * @param null $id
+     * @return \Cake\Http\Response|null
+     * @throws \Aura\Intl\Exception
+     */
     public function edit($id = null)
     {
         /** @var \App\Model\Entity\Post $posts */
@@ -105,30 +110,6 @@ class PostsController extends AdminController
         if ($this->request->is(['patch', 'post', 'put'])) {
 
             $data = $this->request->getData();
-
-            $validator = new Validator();
-
-            $validator
-                ->requirePresence('menu_id')
-                ->notEmpty('menu_id')
-                ->requirePresence('is_active')
-                ->notEmpty('is_active')
-                ->requirePresence('dsp_order')
-                ->notEmpty('dsp_order')
-                ->requirePresence('image_uri')
-                ->notEmpty('image_uri')
-                ->requirePresence('title')
-                ->allowEmpty('title')
-                ->requirePresence('header')
-                ->allowEmpty('header')
-                ->requirePresence('content')
-                ->allowEmpty('content');
-
-            $errors = $validator->errors($this->request->getData());
-
-            if ($errors) {
-                throw new NotFoundException('Invalid request!');
-            }
 
             $posts->uri = $data['image_uri'];
             $posts->menu_id = $data['menu_id'];

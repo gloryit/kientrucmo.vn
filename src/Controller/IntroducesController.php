@@ -22,65 +22,14 @@ class IntroducesController extends AppController {
     /**
      * @return void
      */
-    public function index() {
-        $posts = $this->Posts->find()
-            ->where([
-                'menu_id' => 2,
-            ])
-            ->orderDesc('created')
-            ->first();
-
-        $menu = $this->Menus->find()
-            ->where([
-                'id' => 2,
-            ])
-            ->firstOrFail();
-
-        $this->set(compact('posts', 'menu'));
-    }
-
-    /**
-     * @return void
-     */
     public function introduce()
     {
-        /** @var \App\Model\Entity\Post $post */
         $post = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'menu_id' => 2,
+                'Menus.slug' => 'gioi-thieu'
             ])
             ->firstOrFail();
-
-        /** @var \App\Model\Entity\Menu $menu */
-        $menu = $this->Menus->find()
-            ->where([
-                'id' => 2,
-            ])
-            ->first();
-
-        $this->set(compact('post', 'menu'));
-    }
-
-    /**
-     * @param null $slug
-     */
-    public function detail($slug = null)
-    {
-        /** @var \App\Model\Entity\Post $post */
-        $post = $this->Posts->find()
-            ->where([
-                'slug' => $slug,
-                'menu_id' => 2,
-            ])
-            ->firstOrFail();
-
-        /** @var \App\Model\Entity\Menu $menu */
-        $menu = $this->Menus->find()
-            ->where([
-                'id' => 2,
-            ])
-            ->first();
-
-        $this->set(compact('post', 'menu'));
+        $this->set(compact('post'));
     }
 }

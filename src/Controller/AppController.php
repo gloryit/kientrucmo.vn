@@ -154,7 +154,7 @@ class AppController extends Controller
      */
     protected function toJson($data)
     {
-        if (version_compare(PHP_VERSION, '5.4.0', '>=') && PAH_DEBUG) {
+        if (PHP_VERSION_ID >= 50400 && PAH_DEBUG) {
             $options = JSON_PRETTY_PRINT;
         }
 

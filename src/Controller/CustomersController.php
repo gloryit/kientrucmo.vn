@@ -22,7 +22,7 @@ class CustomersController extends AppController {
         /** @var \App\Model\Entity\Post $post */
         $post = $this->Posts->find()
             ->where([
-                'menu_id' => 6,
+                'menu_id' => 4,
             ])
             ->first();
 

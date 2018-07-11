@@ -51,33 +51,38 @@ Router::scope('/', ['_namePrefix' => 'app:'], function (RouteBuilder $routes) {
      */
 
     $routes->connect('/', ['controller' => 'Homes', 'action' => 'index'], [
+        '_name' => 'index',
+    ]);
+
+    $routes->connect('/trang-chu', ['controller' => 'Homes', 'action' => 'index'], [
         '_name' => 'homes',
     ]);
-    $routes->connect('/tin-tuc.html', ['controller' => 'News', 'action' => 'index'], [
-        '_name' => 'news',
-    ]);
-    $routes->connect('/dich-vu.html', ['controller' => 'Services', 'action' => 'index'], [
-        '_name' => 'services',
-    ]);
-    $routes->connect('/lien-he.html', ['controller' => 'Contacts', 'action' => 'index'], [
+
+//    $routes->connect('/tin-tuc.html', ['controller' => 'News', 'action' => 'index'], [
+//        '_name' => 'news',
+//    ]);
+//    $routes->connect('/dich-vu.html', ['controller' => 'Services', 'action' => 'index'], [
+//        '_name' => 'services',
+//    ]);
+    $routes->connect('/lien-he', ['controller' => 'Contacts', 'action' => 'index'], [
         '_name' => 'contact',
     ]);
 
-    $routes->connect('/gioi-thieu.html', ['controller' => 'Introduces', 'action' => 'introduce'], [
-        '_name' => 'introduces',
-    ]);
+//    $routes->connect('/gioi-thieu', ['controller' => 'Introduces', 'action' => 'introduce'], [
+//        '_name' => 'introduces',
+//    ]);
 
-    $routes->connect('/du-an-tieu-bieu.html', ['controller' => 'Highlights', 'action' => 'index'], [
+    $routes->connect('/cong-trinh-thuc-te', ['controller' => 'Highlights', 'action' => 'index'], [
         '_name' => 'highlights',
     ]);
 
-    $routes->connect('/tuyen-dung.html', ['controller' => 'Recruitments', 'action' => 'index'], [
-        '_name' => 'recruitments',
-    ]);
+//    $routes->connect('/tuyen-dung.html', ['controller' => 'Recruitments', 'action' => 'index'], [
+//        '_name' => 'recruitments',
+//    ]);
 
-    $routes->connect('/khach-hang.html', ['controller' => 'Customers', 'action' => 'index'], [
-        '_name' => 'customers',
-    ]);
+//    $routes->connect('/cafe-va-can-ho', ['controller' => 'CafeCanHo', 'action' => 'index'], [
+//        '_name' => 'customers',
+//    ]);
 
     /**
      * Connect catchall routes for all controllers.
@@ -98,7 +103,27 @@ Router::scope('/', ['_namePrefix' => 'app:'], function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
+Router::scope('/cafe-va-can-ho', ['_namePrefix' => 'cafe:'], function ($routes) {
+
+    /** @var \Cake\Routing\RouteBuilder $routes */
+    $routes->connect('/', ['controller' => 'CafeCanHo', 'action' => 'index', 'prefix' => null], [
+        '_name' => 'index'
+    ]);
+
+    /** @var \Cake\Routing\RouteBuilder $routes */
+    $routes->connect('/:slug.html', ['controller' => 'CafeCanHo', 'action' => 'detail', 'prefix' => null], [
+        'pass' => ['slug'],
+        '_name' => 'view'
+    ]);
+});
+
 Router::scope('/gioi-thieu', ['_namePrefix' => 'introduces:'], function ($routes) {
+
+    /** @var \Cake\Routing\RouteBuilder $routes */
+    $routes->connect('/', ['controller' => 'Introduces', 'action' => 'introduce', 'prefix' => null], [
+        '_name' => 'introduce'
+    ]);
+
     /** @var \Cake\Routing\RouteBuilder $routes */
     $routes->connect('/:slug.html', ['controller' => 'Introduces', 'action' => 'detail', 'prefix' => null], [
         'pass' => ['slug'],
