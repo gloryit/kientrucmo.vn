@@ -31,7 +31,7 @@
                             Viết bởi <span itemprop="name"><?= h($post->author) ?></span>
                         </dd>
                         <dd class="category-name">
-                            Chuyên mục: <a href="<?= $this->Url->build(['_name' => 'app:' . $isPage]) ?>" itemprop="genre"><?= h($menu->title) ?></a>
+                            Chuyên mục: <a href="#" itemprop="genre"><?= h($menu->title) ?></a>
                         </dd>
                         <dd class="create">
                             <span class="icon-calendar" aria-hidden="true"></span>

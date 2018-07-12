@@ -84,6 +84,19 @@ Router::scope('/', ['_namePrefix' => 'app:'], function (RouteBuilder $routes) {
 //        '_name' => 'customers',
 //    ]);
 
+    /** @var \Cake\Routing\RouteBuilder $routes */
+    $routes->connect('/:category', ['controller' => 'Services', 'action' => 'category', 'prefix' => null], [
+        'pass' => ['category'],
+        '_name' => 'category'
+    ]);
+
+    /** @var \Cake\Routing\RouteBuilder $routes */
+    $routes->connect('/:category/:slug-:id.html', ['controller' => 'Services', 'action' => 'details', 'prefix' => null], [
+        'pass' => ['category', 'slug', 'id'],
+        'id' => '[0-9]+',
+        '_name' => 'details'
+    ]);
+
     /**
      * Connect catchall routes for all controllers.
      *

@@ -9,6 +9,8 @@
 namespace App\Controller;
 
 
+use Cake\Network\Exception\NotFoundException;
+
 class ServicesController extends AppController {
 
     public function initialize() {
@@ -63,6 +65,51 @@ class ServicesController extends AppController {
             ->toArray();
 
         $this->set(compact('post', 'menu', 'any'));
+    }
+
+    public function category($category) {
+        $this->request->allowMethod('get');
+        $posts = $this->Posts->find()
+            ->contain('Menus')
+            ->where([
+                'Menus.slug' => $category
+            ])
+            ->toArray();
+
+        $any = $this->Posts->find()
+            ->contain('Menus')
+            ->where([
+                'Menus.slug !=' => $category,
+            ])
+            ->toArray();
+
+        if (!$posts) {
+            throw new NotFoundException('Invalid request!');
+        }
+
+        $this->set(compact('posts', 'any'));
+    }
+
+    public function details($category, $slug, $id) {
+        $this->request->allowMethod('get');
+        $post = $this->Posts->find()
+            ->contain('Menus')
+            ->where([
+                'Menus.slug' => $category,
+                'Posts.id' => $id,
+                'Posts.slug' => $slug,
+            ])
+            ->firstOrFail();
+
+        $any = $this->Posts->find()
+            ->contain('Menus')
+            ->where([
+                'Menus.slug' => $category,
+                'Posts.id !=' => $id,
+            ])
+            ->toArray();
+
+        $this->set(compact('post', 'any'));
     }
 
 }
