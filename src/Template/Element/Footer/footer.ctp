@@ -15,18 +15,20 @@
      class="vtem-section text-white footer clearfix" style="background-color:rgb(51, 51, 51); color:#999999;">
     <div class="vtem-section-inside container clearfix">
         <div class="row section-content clearfix">
+            <?php if ($app_introduce) : ?>
             <div id="block1581c2e525d4645" style="background-color:rgba(255, 255, 255, 0); color:#333333" class="vtem-block system widget-module  col-md-4   position-top"  data-vgrid="4">
                 <div class="vtem-block-inside clearfix">
                     <div class="vtem-moduletable mod-basic clearfix moduletable">
-                        <h3 class="moduletable-title basic-title "><?= h($app_introduce->title) ?></h3>
+                        <h3 class="moduletable-title basic-title "><?= $app_introduce->title ?? '' ?></h3>
                         <div class="moduletable-content basic-body">
                             <div class="custom"  >
-                                <p style="font-size: 17px; line-height: 22px; text-align: justify;"><a href="<?= $this->Url->build(['_name' => 'introduces:view', h($app_introduce->slug)]) ?>"><img src="<?= h($app_introduce->uri) ?>" alt="slide1" style="border: 4px solid #ffffff; margin-bottom: 10px;" /></a><br /><?= h($app_introduce->header) ?><span style="color: #ffcc00;"><a href="<?= $this->Url->build(['_name' => 'introduces:view', h($app_introduce->slug)]) ?>" style="color: #ffcc00;">+ Đọc tiếp</a></span></p>
+                                <p style="font-size: 17px; line-height: 22px; text-align: justify;"><a href="<?= $this->Url->build(['_name' => 'app:introduce']) ?>"><img src="<?= $app_introduce->uri ?? '' ?>" alt="slide1" style="border: 4px solid #ffffff; margin-bottom: 10px;" /></a><br /><?= $app_introduce->header ?? '' ?><span style="color: #ffcc00;"><a href="<?= $this->Url->build(['_name' => 'app:introduce']) ?>" style="color: #ffcc00;">+ Đọc tiếp</a></span></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
             <div id="block1581c2e9a8c4204" style="background-color:rgba(255, 255, 255, 0); color:#333333" class="vtem-block system widget-module  col-md-4  hidden-phone hidden-xs position-bottom"  data-vgrid="4">
                 <div class="vtem-block-inside clearfix">
                     <div class="vtem-moduletable mod-basic clearfix moduletable">

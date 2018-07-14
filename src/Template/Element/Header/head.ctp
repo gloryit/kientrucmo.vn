@@ -14,17 +14,17 @@
 ?>
 <base href="/" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="<?= h($keywords) ?>" />
-<meta name="description" content="<?= h($description) ?>" />
+<meta name="keywords" content="<?= $keywords ?? '' ?>" />
+<meta name="description" content="<?= $description ?? '' ?>" />
 <meta name="author" content="kientrucmo" />
-<meta name="generator" content="<?= h($generator) ?>" />
+<meta name="generator" content="<?= $generator ?? '' ?>" />
 <meta name="robots" content="index, follow" >
-<meta property="og:title" content="<?= h($title) ?>" >
+<meta property="og:title" content="<?= $title ?? '' ?>" >
 <meta property="og:url" content="<?= $this->Url->build($this->request->getUri()->getPath(), true) ?>" >
 <meta property="og:image" content="<?= $this->Url->build('/logo/favicon.png', true) ?>" >
-<meta property="og:description" content="<?= h($description) ?>" >
+<meta property="og:description" content="<?= $description ?? '' ?>" >
 <meta property="og:type" content="website" />
-<title><?= h($title) ?></title>
+<title><?= $title ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="/logo/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" />

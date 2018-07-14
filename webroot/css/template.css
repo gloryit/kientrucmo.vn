@@ -285,12 +285,13 @@ div.itemCommentsForm form input#submitCommentButton {
 }
 
 .vtem-menu-wrapper {
-    padding: 25px 0px 0px;
+    padding: 25px 0 15px;
     display: inline-block;
     float: left;
 }
 
 .vtem-menu-wrapper .nav.vtem-menu {
+    margin-top: 15px;
 }
 
 .main-vtem-menu > li {
@@ -309,7 +310,7 @@ div.itemCommentsForm form input#submitCommentButton {
 
 .oHorizontal .main-vtem-menu > li > a, .oHorizontal .main-vtem-menu > li > span {
     background: none !important;
-    color: #444;
+    color: #fff;
     font-weight: 700;
     padding: 0 0 7px;
     border-bottom: 5px solid transparent;
@@ -615,7 +616,7 @@ div.itemListCategory img {
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
     text-transform: uppercase;
-    color: #ff9900;
+    color: #4f6d78;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 
@@ -1536,7 +1537,7 @@ a.subCategoryMore:hover:before,
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
     text-transform: uppercase;
-    color: #ff9900;
+    color: #4f6d78;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 

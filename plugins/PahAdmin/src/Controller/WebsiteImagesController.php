@@ -161,12 +161,6 @@ class WebsiteImagesController extends AdminController {
 
 
             if ( !$errors ) {
-                $file_extension_map = [
-                    'gif' => 'gif',
-                    'jpeg' => 'jpg',
-                    'jpg' => 'jpg',
-                    'png' => 'png',
-                ];
 
                 $uploaded_file = $this->request->getUploadedFile('image');
                 $tmp_image = ImageManagerStatic::make($uploaded_file->getStream()->getContents());
@@ -208,7 +202,7 @@ class WebsiteImagesController extends AdminController {
                     }
                 }
 
-                $website_image->uri = $this->getImageUri($website_image->created, $website_image->name . '.' . $file_extension_map[strtolower($path_info['extension'])]);
+                $website_image->uri = $this->getImageUri($website_image->created, $website_image->name . '.' . strtolower($path_info['extension']));
 
                 if ($this->WebsiteImages->save($website_image)) {
                     $this->loadComponent('PahAdmin.WebsiteImage');

@@ -67,7 +67,7 @@ $flash_error_key = '1234';
                                     <?= $this->Form->control('title', [
                                         'type' => 'text',
                                         'class' => 'form-control',
-                                        'data-parsley-required' => 'true',
+                                        'data-parsley-required' => 'false',
                                         'data-parsley-trigger' => 'change',
                                         'value' => !empty($posts->title) ? h($posts->title) : '',
                                         'label' => false
@@ -117,7 +117,7 @@ $flash_error_key = '1234';
                                         'rows' => '3',
                                         'value' => !empty($posts->header) ? h($posts->header) : '',
                                         'placeholder' => 'This top content',
-                                        'data-parsley-required' => 'true',
+                                        'data-parsley-required' => 'false',
                                         'data-parsley-trigger' => 'change',
                                         'label' => false
                                     ]); ?>

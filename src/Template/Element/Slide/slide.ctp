@@ -16,7 +16,7 @@
             <div id="block158048411bf7592"
                  style="background-color:rgb(245, 245, 245); color:#333333"
                  class="vtem-block extend widget-slideshow  col-md-12  hidden-phone hidden-xs "  data-vgrid="12">
-                <?php if ($this->request->here === '/'): ?>
+                <?php if ($this->request->here === '/' || $this->request->here === '/trang-chu'): ?>
                 <div class="vtem-block-inside clearfix">
                     <div id="slider158048411bf7592" class="vtem_main_slideshow box_skitter vtemskiter-none navpos-center">
                         <ul class="skitter-data" style="display:none">

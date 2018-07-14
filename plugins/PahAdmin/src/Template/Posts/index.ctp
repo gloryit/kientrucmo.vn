@@ -81,7 +81,6 @@
         var $toppageLogo_table = $('#toppageLogo_table');
         var edit_url = "<?= $this->Url->build(['plugin' => 'PahAdmin', 'controller' => 'Posts', 'action' => 'edit']) ?>/";
         var datatables_config = {
-            "dom": '<"top"i>prt<"bottom"l><"clear">',
             "rowId": 'id',
             "serverSide": true,
             "pageLength": 10,
@@ -98,23 +97,23 @@
                 {
                     "targets": 0,
                     "data": 'id',
-                    "searchable": false,
-                    "orderable": false
+                    "searchable": true,
+                    "orderable": true
                 },
                 {
                     "targets": 1,
                     "data": 'uri',
                     "render": function (data, type, full, meta) {
-                        return '<img src="' + data + '" alt="" height="150" width="300">';
+                        return '<img src="' + data + '" alt="" height="50" width="100">';
                     },
                     "searchable": true,
-                    "orderable": false
+                    "orderable": true
                 },
                 {
                     "targets": 2,
                     "data": 'title',
                     "searchable": true,
-                    "orderable": false
+                    "orderable": true
                 },
                 {
                     "targets": 3,
@@ -132,14 +131,14 @@
                     //     };
                     //     return index[data];
                     // },
-                    "searchable": false,
-                    "orderable": false
+                    "searchable": true,
+                    "orderable": true
                 },
                 {
                     "targets": 4,
                     "data": 'author',
                     "searchable": true,
-                    "orderable": false
+                    "orderable": true
                 },
                 {
                     "targets": 5,
@@ -158,8 +157,8 @@
                         }
                         return dd + '/' + mm + '/' + today.getFullYear();
                     },
-                    "searchable": false,
-                    "orderable": false
+                    "searchable": true,
+                    "orderable": true
                 },
                 {
                     "targets": 6,
@@ -168,8 +167,8 @@
                         return '<a href="' + edit_url + data + '"><i class="fa fa-edit"></i> Edit</a> ' +
                             '&nbsp;&nbsp;&nbsp;<a href="#" class="delete_post" data-id="' + data + '" style="color:red"><i class="fa fa-remove"></i></a>';
                     },
-                    "searchable": false,
-                    "orderable": false
+                    "searchable": true,
+                    "orderable": true
                 }
             ]
         };

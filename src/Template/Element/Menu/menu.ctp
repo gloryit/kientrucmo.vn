@@ -6,7 +6,7 @@
  */
 ?>
 <ul class="nav menu nav-pills vtem-menu" id="menu14e52c68f0e7306">
-    <?php foreach ($menus as $menu) : ?>
+    <?php foreach ($menus ?? [] as $menu) : ?>
         <?php if (!$menu->parent_menu && $menu->level === 0): ?>
             <li class="item-188 deeper parent">
                 <a href="<?= $this->Url->build(h($menu->slug), true) ?>" class="text-uppercase"><?= h($menu->name) ?></a>
@@ -17,7 +17,7 @@
                 <ul class="nav-child unstyled small">
                     <?php foreach ($child_menus as $child) : ?>
                         <?php if ($child->parent_id === $menu->id) : ?>
-                            <li class="item-1 text-uppercase"><a href="#"><?= h($child->name) ?></a></li>
+                            <li class="item-1 text-uppercase"><a href="<?= $this->Url->build(strtolower($child->slug) ?? '', true) ?>"><?= $child->name ?? '' ?></a></li>
                         <?php endif ?>
                     <?php endforeach; ?>
                 </ul>

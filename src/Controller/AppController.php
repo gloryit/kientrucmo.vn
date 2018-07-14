@@ -64,26 +64,6 @@ class AppController extends Controller
         $this->loadModel('Slides');
         $this->loadModel('Banners');
 
-        /** @var \App\Model\Entity\Post $app_introduces */
-        $app_introduces = $this->Posts->find()
-            ->where([
-                'menu_id' => 2,
-            ])
-            ->toArray();
-
-        /** @var \App\Model\Entity\Post[] $app_services */
-        $app_services = $this->Posts->find()
-            ->where([
-                'menu_id' => 3,
-            ])
-            ->toArray();
-
-        $sub_services = $this->Menus->find()
-            ->where([
-                'parent_id' => 3,
-            ])
-            ->toArray();
-
         $app_highlights = $this->Posts->find()
             ->where([
                 'menu_id' => 3,
@@ -91,28 +71,24 @@ class AppController extends Controller
             ->orderDesc('created')
             ->limit(8)
             ->toArray();
+
         /** @var \App\Model\Entity\Post $app_introduce */
         $app_introduce = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'menu_id' => 3,
+                'Menus.slug' => 'gioi-thieu',
             ])
             ->first();
-
-        $app_contact = $this->Contacts->find()
-            ->firstOrFail();
 
         $app_slides = $this->Slides->find()
             ->orderDesc('created')
             ->limit(6)
             ->toArray();
 
-        $page_banner = $this->Banners->find()
-            ->where([
-                'id' => 2
-            ])
-            ->first();
+        $app_contact = $this->Contacts->find()
+            ->firstOrFail();
 
-        $this->set(compact('app_introduces', 'sub_services', 'app_services', 'app_highlights', 'app_introduce', 'app_contact', 'app_slides', 'page_banner'));
+        $this->set(compact('app_contact', 'app_slides', 'app_introduce', 'app_highlights'));
         $this->set('isPage', 'homes');
         $this->set('keywords', 'thiet ke noi that can ho dep, thiết kế nội thất căn hộ đẹp, thiet ke noi that van phong hien dai, thiết kế nội thất văn phòng hiện đại, thiet ke noi that shop, thiết kế nội thất shop');
         $this->set('description', '+ P A H chuyên thiết kế và thi công Nội thất Văn phòng, Showroom, Shop, Biệt thự, Căn hộ theo phong cách Scandinavia &amp; Minimalism / Our Experts in Scandinavia &amp; Minimalism Interior Design');
@@ -130,8 +106,6 @@ class AppController extends Controller
             ->orderAsc('Menus.lft')
             ->where('ParentMenus.id IS NOT NULL')
             ->toArray();
-
-//        dd($this->Menus->find('treeList')->orderAsc('Menus.lft')->toArray());
 
         $this->set(compact('menus', 'child_menus'));
     }

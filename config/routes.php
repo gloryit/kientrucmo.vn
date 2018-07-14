@@ -58,31 +58,17 @@ Router::scope('/', ['_namePrefix' => 'app:'], function (RouteBuilder $routes) {
         '_name' => 'homes',
     ]);
 
-//    $routes->connect('/tin-tuc.html', ['controller' => 'News', 'action' => 'index'], [
-//        '_name' => 'news',
-//    ]);
-//    $routes->connect('/dich-vu.html', ['controller' => 'Services', 'action' => 'index'], [
-//        '_name' => 'services',
-//    ]);
     $routes->connect('/lien-he', ['controller' => 'Contacts', 'action' => 'index'], [
         '_name' => 'contact',
     ]);
 
-//    $routes->connect('/gioi-thieu', ['controller' => 'Introduces', 'action' => 'introduce'], [
-//        '_name' => 'introduces',
-//    ]);
+    $routes->connect('/gioi-thieu', ['controller' => 'Introduces', 'action' => 'introduce'], [
+        '_name' => 'introduce',
+    ]);
 
     $routes->connect('/cong-trinh-thuc-te', ['controller' => 'Highlights', 'action' => 'index'], [
         '_name' => 'highlights',
     ]);
-
-//    $routes->connect('/tuyen-dung.html', ['controller' => 'Recruitments', 'action' => 'index'], [
-//        '_name' => 'recruitments',
-//    ]);
-
-//    $routes->connect('/cafe-va-can-ho', ['controller' => 'CafeCanHo', 'action' => 'index'], [
-//        '_name' => 'customers',
-//    ]);
 
     /** @var \Cake\Routing\RouteBuilder $routes */
     $routes->connect('/:category', ['controller' => 'Services', 'action' => 'category', 'prefix' => null], [
@@ -125,20 +111,6 @@ Router::scope('/cafe-va-can-ho', ['_namePrefix' => 'cafe:'], function ($routes) 
 
     /** @var \Cake\Routing\RouteBuilder $routes */
     $routes->connect('/:slug.html', ['controller' => 'CafeCanHo', 'action' => 'detail', 'prefix' => null], [
-        'pass' => ['slug'],
-        '_name' => 'view'
-    ]);
-});
-
-Router::scope('/gioi-thieu', ['_namePrefix' => 'introduces:'], function ($routes) {
-
-    /** @var \Cake\Routing\RouteBuilder $routes */
-    $routes->connect('/', ['controller' => 'Introduces', 'action' => 'introduce', 'prefix' => null], [
-        '_name' => 'introduce'
-    ]);
-
-    /** @var \Cake\Routing\RouteBuilder $routes */
-    $routes->connect('/:slug.html', ['controller' => 'Introduces', 'action' => 'detail', 'prefix' => null], [
         'pass' => ['slug'],
         '_name' => 'view'
     ]);

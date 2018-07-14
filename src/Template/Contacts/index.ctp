@@ -60,7 +60,6 @@
                                                 <td colspan="2">
                                                     <label for="vtem_contact_name">Name<span class="star">*</span></label>
                                                     <?= $this->Form->control('name', [
-                                                        'placeholder' => 'Name...',
                                                         'class' => 'vt_inputbox required',
                                                         'id' => 'vtem_contact_name',
                                                         'data-parsley-required' => 'true',
@@ -76,7 +75,6 @@
                                                         'type' => 'email',
                                                         'id' => 'vtem_contact_email',
                                                         'class' => 'vt_inputbox required validate-email',
-                                                        'placeholder' => 'Email...',
                                                         'data-parsley-required' => 'true',
                                                         'data-parsley-trigger' => 'change',
                                                         'label' => false
@@ -86,7 +84,6 @@
                                             <tr>
                                                 <td colspan="2"><label for="vtem_contact_subject">Subject<span class="star">*</span></label>
                                                     <?= $this->Form->control('subject', [
-                                                        'placeholder' => 'Subject...',
                                                         'id' => 'vtem_contact_subject',
                                                         'class' => 'vt_inputbox required',
                                                         'data-parsley-required' => 'true',
@@ -106,7 +103,6 @@
                                                         'rows' => 6,
                                                         'data-parsley-required' => 'true',
                                                         'data-parsley-trigger' => 'change',
-                                                        'placeholder' => 'Message...',
                                                         'label' => false
                                                     ]); ?>
                                                 </td>
@@ -122,40 +118,31 @@
                             </div>
                         </div>
 
-                        <!-- https://developers.google.com/maps/documentation/embed/start-->
-
                         <div style='overflow:hidden;height:440px;width:100%;'>
                             <div id='gmap_canvas' style='height:440px;width:100%;'></div>
-                            <style>
-                                #gmap_canvas img{
-                                    max-width:none!important;
-                                    background:none!important
-                                }
-                            </style>
                         </div>
-                        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBBoZuKeZP3HGRD5fYIvLzVvcRQWqkIGgA&callback=initMap'></script>
                         <script type='text/javascript'>
                             function initMap() {
                                 var myOptions = {
-                                    zoom: 18,
-                                    center: new google.maps.LatLng(10.8606604, 106.6782852),
+                                    zoom: 19,
+                                    center: new google.maps.LatLng(10.8249635, 106.6785964),
                                     mapTypeId: google.maps.MapTypeId.ROADMAP
                                 };
                                 map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
                                 marker = new google.maps.Marker({
                                     map: map,
-                                    position: new google.maps.LatLng(10.8606604, 106.6782852)
+                                    position: new google.maps.LatLng(10.8249635, 106.6785964)
                                 });
                                 infowindow = new google.maps.InfoWindow({
-                                    content: '<strong>Công ty TNHH kiến trúc nội thất + p a h</strong><br>35 Hà Huy Giáp, Thạnh Lộc, Quận 12, Hồ Chí Minh, Việt Nam<br>'
+                                    content: '<strong>Công ty TNHH kiến trúc nội thất MO</strong><br>254/7 Nguyen Van Cong street, 3 ward, Go Vap district, HCM city<br>'
                                 });
                                 google.maps.event.addListener(marker, 'click', function() {
                                     infowindow.open(map, marker);
                                 });
                                 infowindow.open(map, marker);
                             }
-                            google.maps.event.addDomListener(window, 'load', initMap);
                         </script>
+                        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBBoZuKeZP3HGRD5fYIvLzVvcRQWqkIGgA&callback=initMap'></script>
                     </div>
                 </div>
             </div>
@@ -164,6 +151,10 @@
 </div>
 <?php $this->appendStylesTop() ?>
 <style>
+    #gmap_canvas img{
+        max-width:none!important;
+        background:none!important
+    }
     /* *********  form design  **************************** */
 
     .editor.btn-toolbar {
