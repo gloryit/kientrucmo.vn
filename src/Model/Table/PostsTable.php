@@ -48,7 +48,6 @@ class PostsTable extends Table
 
         $validator
             ->scalar('uri')
-            ->maxLength('uri', 255)
             ->allowEmpty('uri');
 
         $validator

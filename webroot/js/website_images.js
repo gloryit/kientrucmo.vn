@@ -137,7 +137,7 @@ let WebsiteImages = function () {
 
             for (let i = 0; i < self.image_list.length; i++) {
                 if (parseInt(self.image_list[i].id) === image_id) {
-                    self.clearAllSelection(false)
+                    // self.clearAllSelection()
                     self.selected_images.push(self.image_list[i])
                     self.selectImage($this)
                     self.dispatchEvent({
@@ -191,7 +191,7 @@ let WebsiteImages = function () {
         this.$choose_image_btn.on('click', function (e) {
             if (typeof self.onChoose === 'function') {
                 self.$modal.modal('hide')
-                self.onChoose(self.selected_images[0])
+                self.onChoose(self.selected_images)
             }
         })
 

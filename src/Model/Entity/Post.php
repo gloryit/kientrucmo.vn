@@ -1,6 +1,7 @@
 <?php
 namespace App\Model\Entity;
 
+use App\Controller\API\StringAPI;
 use Cake\ORM\Entity;
 
 /**
@@ -20,6 +21,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\Menu $menu
+ * @property string $link_images
  */
 class Post extends Entity
 {
@@ -52,9 +54,6 @@ class Post extends Entity
      * @return string
      */
     protected function _getLinkImages() {
-        if (empty($this->uri)) {
-            return '/upload/404-not-found.gif';
-        }
-        return $this->uri;
+        return explode('-', StringAPI::filterSearchKeyword($this->uri))[0] ?? '/upload/404-not-found.gif';
     }
 }

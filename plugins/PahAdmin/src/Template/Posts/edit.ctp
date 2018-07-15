@@ -80,14 +80,14 @@ $flash_error_key = '1234';
                                 <label class="control-label col-md-2">
                                     Logo <span class="required">*</span>
                                 </label>
-                                <div class="col-md-8">
+                                <div class="col-md-8 show-image-upload">
                                     <div class="input-group" style="margin-bottom: 0; padding-bottom: 0">
                                         <input type="text"
                                                class="form-control Posts"
                                                required="required"
                                                data-parsley-errors-container="#picture-errors"
                                                data-parsley-trigger="change"
-                                               value="<?= $posts->link_images ?>"
+                                               value="<?= $posts->uri ?>"
                                                placeholder="Image's link"
                                                disabled>
                                         <span class="input-group-btn">
@@ -100,8 +100,13 @@ $flash_error_key = '1234';
                                     <div class="clearfix"></div>
                                     <div id="Posts"></div>
                                     <div class="clearfix"></div>
-                                    <img src="<?= $posts->link_images ?><?= $posts->modified?'?modified='.$posts->modified->timestamp:'' ?>" style="max-width: 200px; cursor: pointer" class="Posts image-show">
-                                    <input value="<?= $posts->link_images ?>" type="hidden" class="form-control Posts" name="image_uri">
+
+                                    <?php if ($posts->uri) : ?>
+                                        <?php foreach (\App\Controller\API\StringAPI::filterSpace($posts->uri) as $image_uri) : ?>
+                                            <img src="<?= $image_uri ?><?= $posts->modified?'?modified='.$posts->modified->timestamp:'' ?>" style="max-width: 100px; cursor: pointer; padding: 0 5px" class="posts image-show">
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    <input value="<?= $posts->uri ?>" type="hidden" class="form-control Posts" name="image_uri">
                                 </div>
                             </div>
                             <!-- End Images region -->
@@ -217,6 +222,14 @@ $flash_error_key = '1234';
 <script type="text/javascript">
   $(document).ready(function() {
 
+  function appendImage(image) {
+      var img = document.createElement('img');
+      img.setAttribute('src', image)
+      img.setAttribute('style', 'max-width: 100px; cursor: pointer; padding: 0 5px')
+      img.setAttribute('class', 'image-show-multiple posts-multiple')
+      return img;
+  }
+
     // Form validation
     var $edit_form = $('#edit-form');
     $edit_form.dirtyForms();
@@ -226,8 +239,16 @@ $flash_error_key = '1234';
     $('.select-picture').on('click', function(e) {
       var $this = $(this);
       uploadBox.onChoose = function(image) {
-        $('input' + $this.data('image-target')).val(image.uri).change();
-        $('img' + $this.data('image-target')).attr('src',image.uri);
+          var images = document.getElementsByTagName('img');
+          for (var i = 0; i < images.length; i++) {
+              images[0].parentNode.removeChild(images[0]);
+          }
+          var $url = '';
+          for(var i = 0; i < image.length; i++) {
+              $url += image[i].uri + ' '
+              $('.show-image-upload').append(appendImage(image[i].uri));
+          }
+          $('input' + $this.data('image-target')).val($url).change();
       };
       uploadBox.open();
     });

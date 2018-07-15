@@ -69,7 +69,6 @@ class AdminController extends Controller
         $option += $parentCategories;
 
         $this->set(compact('option',  'parentCategories'));
-
     }
 
     /**

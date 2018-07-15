@@ -72,6 +72,20 @@ class StringAPI {
     }
 
     /**
+     * @param string $string String.
+     * @return mixed|string
+     */
+    public static function filterSpace($string) {
+        $str = trim($string);
+        /** remove double space and new line characters */
+        $str = preg_replace("/\s+/", " ", trim($str));
+
+        $str = explode(' ', $str);
+
+        return $str;
+    }
+
+    /**
      * @param string $word Word.
      * @return int
      */
