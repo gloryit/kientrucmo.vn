@@ -243,8 +243,8 @@
     $('.select-picture').on('click', function(e) {
       var $this = $(this);
       uploadBox.onChoose = function(image) {
-        $('input' + $this.data('image-target')).val(image.uri).change();
-        $('img' + $this.data('image-target')).attr('src',image.uri);
+        $('input' + $this.data('image-target')).val(image[0].uri).change();
+        $('img' + $this.data('image-target')).attr('src',image[0].uri);
       };
       uploadBox.open();
     });

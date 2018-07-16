@@ -87,11 +87,11 @@ $flash_error_key = '1234';
                                                required="required"
                                                data-parsley-errors-container="#picture-errors"
                                                data-parsley-trigger="change"
-                                               value="<?= $posts->link_images ?>"
+                                               value="<?= $posts->uri ?>"
                                                placeholder="Image's link"
                                                disabled>
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-primary select-picture" data-image-target=".Posts" >
+                                            <button type="button" class="btn btn-primary select-picture" data-image-target=".posts" >
                                                 <i class="fa fa-image" aria-hidden="true"></i>
                                                 Select picture
                                             </button>
