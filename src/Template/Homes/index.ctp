@@ -107,13 +107,13 @@ use Cake\Routing\Router;
                     </script>
                     <div id="vtemnewsdrawernewsdrawerid159" class="vtem-newsdrawer-style4 vtem_newsdrawer_item clearfix newsdrawer">
                         <ul id="vtem-newsdrawerid159-newsdrawer" class="vtemdrawer">
-                            <?php foreach ($news as $new):?>
-                                <li id='vtem<?= h($new->id) ?>' >
-                                    <a href="<?= $this->Url->build(['_name' => 'news:view', $new->slug]) ?>"><img class="vtem_drawer_image" src="<?= h($new->link_images) ?>" /></a>
+                            <?php foreach ($news as $post):?>
+                                <li id='vtem<?= h($post->id) ?>' >
+                                    <a href="<?= $this->Url->build(['_name' => 'app:details', h(strtolower($post->menu->slug)), h(strtolower($post->slug)), h(strtolower($post->id))], true) ?>"><img class="vtem_drawer_image" src="<?= h($post->link_images) ?>" /></a>
                                     <div class="vtemnewsdrawer_infor">
-                                        <h4 class="vtem_newsdrawer_title"><a href="<?= $this->Url->build(['_name' => 'news:view', $new->slug]) ?>"><?= h($new->title) ?></a></h4>
+                                        <h4 class="vtem_newsdrawer_title"><a href="<?= $this->Url->build(['_name' => 'news:view', $post->slug]) ?>"><?= h($post->title) ?></a></h4>
                                     </div>
-                                    <h4 class="newsdrawercaption"><span><?= h($new->title) ?></span></h4>
+                                    <h4 class="newsdrawercaption"><span><?= h($post->title) ?></span></h4>
                                 </li>
                             <?php endforeach ?>
                         </ul>
@@ -156,13 +156,13 @@ use Cake\Routing\Router;
                       });
                     </script>
                     <div id="vtemnewsboxid153-box" class="vtem-newsbox clearfix newsbox-">
-                        <?php foreach ($highlights as $highlight): ?>
+                        <?php foreach ($highlights as $post): ?>
                             <div class='vtemboxgrid captionfull'>
-                                <img src="<?= h($highlight->link_images) ?>" alt="<?= h($highlight->slug) ?>" />
+                                <img src="<?= h($post->link_images) ?>" alt="<?= h($post->slug) ?>" />
                                 <div class="box-caption">
                                     <div class="vtemnewsbox_inside">
-                                        <h4 class="vtem_news_box_title boxTitle"><a href="<?= $this->Url->build(['_name' => 'highlights:view', h($highlight->slug)]) ?>"><?= h($highlight->slug) ?></a></h4>
-                                        <div class="vt_readmore clearfix"><a class="vtem-newsbox-readon" href="<?= $this->Url->build(['_name' => 'highlights:view', h($highlight->slug)]) ?>"><span>Xem chi tiết ...</span></a></div>
+                                        <h4 class="vtem_news_box_title boxTitle"><a href="<?= $this->Url->build(['_name' => 'app:details', h(strtolower($post->menu->slug)), h(strtolower($post->slug)), h(strtolower($post->id))], true) ?>"><?= h($post->slug) ?></a></h4>
+                                        <div class="vt_readmore clearfix"><a class="vtem-newsbox-readon" href="<?= $this->Url->build(['_name' => 'app:details', h(strtolower($post->menu->slug)), h(strtolower($post->slug)), h(strtolower($post->id))], true) ?>"><span>Xem chi tiết ...</span></a></div>
                                     </div>
                                 </div>
                             </div>

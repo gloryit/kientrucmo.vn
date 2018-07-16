@@ -28,17 +28,19 @@ class HomesController extends AppController {
             ->toArray();
 
         $news = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'menu_id' => 4,
+                'Menus.slug NOT IN' => ['gioi-thieu', 'lien-he', 'cafe-va-can-ho'],
             ])
-            ->orderDesc('created')
+            ->orderDesc('Posts.created')
             ->toArray();
 
         $highlights = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'menu_id' => 3,
+                'Menus.slug NOT IN' => ['gioi-thieu', 'lien-he', 'cafe-va-can-ho'],
             ])
-            ->orderDesc('created')
+            ->orderDesc('Posts.created')
             ->limit(6)
             ->toArray();
 

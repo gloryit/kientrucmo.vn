@@ -31,9 +31,9 @@
 <link href="/css/template.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="/css/responsive.css" type="text/css" />
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
-<link href="/css/slick.css" rel="stylesheet" type="text/css" />
-<link href="/css/slick-theme.css" rel="stylesheet" type="text/css" />
 <?= $this->fetch('styles_top') ?>
+<link href="/css/photoswipe.css" rel="stylesheet" type="text/css" />
+<link href="/css/default-skin/default-skin.css" rel="stylesheet" type="text/css" />
 
 <script src="/js/jquery.min.js" type="text/javascript"></script>
 <script src="/js/jquery-noconflict.js" type="text/javascript"></script>
@@ -46,3 +46,5 @@
 <script src="/js/core.js" type="text/javascript"></script>
 <script src="/js/jquery.drawer.js" type="text/javascript"></script>
 <script type="text/javascript" src="/js/jquery.hoversliding.js"></script>
+<script type="text/javascript" src="/js/photoswipe.min.js"></script>
+<script type="text/javascript" src="/js/photoswipe-ui-default.min.js"></script>
