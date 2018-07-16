@@ -21,7 +21,7 @@
 <meta name="robots" content="index, follow" >
 <meta property="og:title" content="<?= $title ?? '' ?>" >
 <meta property="og:url" content="<?= $this->Url->build($this->request->getUri()->getPath(), true) ?>" >
-<meta property="og:image" content="<?= $this->Url->build('/logo/favicon.png', true) ?>" >
+<meta property="og:image" content="<?= $this->Url->build('/images/logo/logo-kien-truc-mo.png', true) ?>" >
 <meta property="og:description" content="<?= $description ?? '' ?>" >
 <meta property="og:type" content="website" />
 <title><?= $title ?></title>
