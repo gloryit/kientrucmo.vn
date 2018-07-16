@@ -124,25 +124,9 @@ Router::scope('/cong-trinh-thuc-te', ['_namePrefix' => 'services:'], function ($
     ]);
 });
 
-Router::scope('/tin-tuc', ['_namePrefix' => 'news:'], function ($routes) {
-    /** @var \Cake\Routing\RouteBuilder $routes */
-    $routes->connect('/:slug.html', ['controller' => 'News', 'action' => 'detail', 'prefix' => null], [
-        'pass' => ['slug'],
-        '_name' => 'view'
-    ]);
-});
-
-Router::scope('/du-an-tieu-bieu', ['_namePrefix' => 'highlights:'], function ($routes) {
-    /** @var \Cake\Routing\RouteBuilder $routes */
-    $routes->connect('/:slug.html', ['controller' => 'Highlights', 'action' => 'detail', 'prefix' => null], [
-        'pass' => ['slug'],
-        '_name' => 'view'
-    ]);
-});
-
 
 /**
  * Load all plugin routes. See the Plugin documentation on
  * how to customize the loading of plugin routes.
  */
-Plugin::routes();
+Plugin::loadAll();
