@@ -54,6 +54,10 @@ class Post extends Entity
      * @return string
      */
     protected function _getLinkImages() {
-        return explode('-', StringAPI::filterSearchKeyword($this->uri))[0] ?? '/upload/404-not-found.gif';
+        if (!empty(StringAPI::filterSpace($this->uri)[0])) {
+            return StringAPI::filterSpace($this->uri)[0];
+        }
+
+        return '/upload/404-not-found.gif';
     }
 }

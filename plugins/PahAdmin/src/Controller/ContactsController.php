@@ -74,6 +74,7 @@ class ContactsController extends AdminController {
             $contact->tax_code = $data['tax_code'];
             $contact->email = $data['email'];
             $contact->hotline = $data['hotline'];
+            $contact->website = $data['website'];
 
             if ($this->Contacts->save($contact)) {
                 $this->Flash->success(__('The user has been saved.'), ['key' => 'contact_key']);

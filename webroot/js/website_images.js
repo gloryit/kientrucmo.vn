@@ -1,6 +1,6 @@
-let WebsiteImages = function () {
-    "use strict";
+"use strict";
 
+let WebsiteImages = function () {
     this.is_initialized = false
     this.is_updated = true
     this.$modal = false
@@ -34,7 +34,7 @@ let WebsiteImages = function () {
     this.selected_images = [];
 
     this.options = {
-        allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif'],
+        allowedFileTypes: ['image/png', 'image/jpeg', 'image/gif', 'image/jpg'],
         maxSizeInMb: 10
     }
 
@@ -137,7 +137,6 @@ let WebsiteImages = function () {
 
             for (let i = 0; i < self.image_list.length; i++) {
                 if (parseInt(self.image_list[i].id) === image_id) {
-                    // self.clearAllSelection()
                     self.selected_images.push(self.image_list[i])
                     self.selectImage($this)
                     self.dispatchEvent({
@@ -196,21 +195,23 @@ let WebsiteImages = function () {
         })
 
         this.$remove_image_btn.on('click', function (e) {
-            if (self.selected_images[0] && confirm('Are you sure to delete this image?')) {
-                let image_id = self.selected_images[0]['id'];
-                $.ajax({
-                    url: '/pah-admin/website-images/remove/' + image_id,
-                    type: 'post',
-                    data: {
-                        _csrfToken: $('meta[name=_csrfToken]').attr('content')
-                    },
-                    success: function () {
-                        self.reloadImageList()
-                    },
-                    error: function () {
+            if (self.selected_images && confirm('Are you sure to delete this image?')) {
+                for (let i = 0; i < self.selected_images.length; i++) {
+                    let image_id = self.selected_images[i]['id'];
+                    $.ajax({
+                        url: '/pah-admin/website-images/remove/' + image_id,
+                        type: 'post',
+                        data: {
+                            _csrfToken: $('meta[name=_csrfToken]').attr('content')
+                        },
+                        success: function () {
+                            self.reloadImageList()
+                        },
+                        error: function () {
 
-                    }
-                })
+                        }
+                    })
+                }
             }
 
         })
@@ -449,6 +450,7 @@ let WebsiteImages = function () {
     }
 
     this.isValidFileSize = (file_list) => {
+        console.log(self.options.maxSizeInMb)
         if (self.options.maxSizeInMb === undefined) {
             return true
         }

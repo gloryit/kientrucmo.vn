@@ -87,7 +87,7 @@ $flash_error_key = '1234';
                                                required="required"
                                                data-parsley-errors-container="#picture-errors"
                                                data-parsley-trigger="change"
-                                               value="<?= $posts->uri ?>"
+                                               value="<?= $posts->link_images ?>"
                                                placeholder="Image's link"
                                                disabled>
                                         <span class="input-group-btn">
@@ -97,8 +97,6 @@ $flash_error_key = '1234';
                                             </button>
                                         </span>
                                     </div>
-                                    <div class="clearfix"></div>
-                                    <div id="Posts"></div>
                                     <div class="clearfix"></div>
 
                                     <?php if ($posts->uri) : ?>

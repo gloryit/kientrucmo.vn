@@ -39,6 +39,12 @@
                         </dd>
                     </dl>
                     <div itemprop="articleBody">
+                        <?php if (!empty($post->uri)) : ?>
+                            <?php foreach (\App\Controller\API\StringAPI::filterSpace($post->uri) as $image_uri) : ?>
+                                <img src="<?= $image_uri ?><?= $post->modified?'?modified='.$post->modified->timestamp:'' ?>" class="posts image-show">
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+
                         <?= $this->Escape->purify($post->content) ?>
 
                         <?= $this->element('Modules/dichvu')?>

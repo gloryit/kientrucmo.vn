@@ -79,7 +79,7 @@ class ServicesController extends AppController {
         $any = $this->Posts->find()
             ->contain('Menus')
             ->where([
-                'Menus.slug !=' => $category,
+                'Menus.slug NOT IN' => [ $category, 'gioi-thieu', 'lien-he', 'cafe-va-can-ho'],
             ])
             ->toArray();
 

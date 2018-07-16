@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <?= $this->element('Header/head')?>
-
     <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('styles_top'); ?>
+    <?= $this->element('Header/head')?>
 </head>
 <body id="vtem" class="site com_content opt-featured menuid101 template-style1 site-body layout-mode-full tpl-on homepage blog-basic" >
 <div id="vtem-wrapper" class="vtem-wrapper clearfix">

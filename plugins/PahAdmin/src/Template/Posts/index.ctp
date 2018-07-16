@@ -102,7 +102,7 @@
                 },
                 {
                     "targets": 1,
-                    "data": 'uri',
+                    "data": 'link_images',
                     "render": function (data, type, full, meta) {
                         return '<img src="' + data + '" alt="" height="50" width="100">';
                     },

@@ -19,9 +19,10 @@ class HomesController extends AppController {
 
     public function index() {
         $tops = $this->Posts->find()
+            ->contain('Menus')
             ->order(['RAND()'])
             ->where([
-                'menu_id' => 2,
+                'Menus.slug NOT IN' => ['gioi-thieu', 'lien-he', 'cafe-va-can-ho'],
             ])
             ->limit(3)
             ->toArray();

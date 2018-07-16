@@ -6,14 +6,14 @@
  * Date: 1/3/2018
  * Time: 12:10 AM
  *
- * @var \App\Model\Entity\Post[] $app_highlights
+ * @var \App\Model\Entity\Post[] $any
  * @var \App\View\AppView $this
  */
 ?>
 
 <div id="block14f6445fc705476" style="background-color:rgba(255, 255, 255, 0); color:#333333" class="vtem-block system widget-module  col-md-4  hidden-phone hidden-xs position-right" data-vgrid="4">
     <div class="vtem-block-inside clearfix">
-        <?php if ($app_highlights) : ?>
+        <?php if (!empty($any)) : ?>
         <div class="vtem-moduletable mod-block well clearfix moduletable">
             <h3 class="moduletable-title block-title ">Dự Án Tiêu Biểu</h3>
             <div class="moduletable-content block-body">
@@ -32,7 +32,7 @@
                     });
                 </script>
                 <div id="vtemnewsboxid155-box" class="vtem-newsbox clearfix newsbox- box-wrapper">
-                    <?php foreach ($app_highlights as $highlight): ?>
+                    <?php foreach ($any as $highlight): ?>
                     <div class="vtemboxgrid caption vtem-boxgrid" style="width: 295px; height: 210px; float: left;">
                         <img src="<?= h($highlight->link_images) ?>" alt="vtem news box">
                         <div class="box-caption vtem-slideItem" style="top: 173px;">

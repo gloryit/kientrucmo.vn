@@ -55,6 +55,10 @@ class PostsController extends AdminController
 
         $posts = $posts_query->toArray();
 
+        foreach ($posts as $post) {
+            $post['link_images'] = $post->link_images;
+        }
+
         $params['data'] = $posts;
 
         $this->response = $this->response->withStringBody(json_encode($params));
@@ -91,7 +95,6 @@ class PostsController extends AdminController
     /**
      * @param null $id
      * @return \Cake\Http\Response|null
-     * @throws \Aura\Intl\Exception
      */
     public function edit($id = null)
     {

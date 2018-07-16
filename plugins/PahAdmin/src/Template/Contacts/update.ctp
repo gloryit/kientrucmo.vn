@@ -9,7 +9,7 @@
     <div class="page-title">
         <div class="title_left">
             <h3>
-                <a href="<?php $this->Url->build(['controller'=>'Posts','action'=>'index','plugin'=>'PahAdmin']) ?>">POSTS JOBS</a>
+                <a href="<?php $this->Url->build(['controller'=>'Posts','action'=>'index','plugin'=>'PahAdmin']) ?>">CONTACT</a>
             </h3>
         </div>
     </div>
@@ -84,7 +84,7 @@
                                         'class'     => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
-                                        'value' => !empty($contact->company) ? h($contact->company) : '',
+                                        'value' => $contact->company ?? '',
                                         'label'     => false
                                     ])?>
                                 </div>
@@ -98,7 +98,7 @@
                                         'class'     => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
-                                        'value' => !empty($contact->address) ? h($contact->address) : '',
+                                        'value' => $contact->address ?? '',
                                         'label'     => false
                                     ])?>
                                 </div>
@@ -112,7 +112,7 @@
                                         'class'     => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
-                                        'value' => !empty($contact->tel) ? h($contact->tel) : '',
+                                        'value' => $contact->tel ?? '',
                                         'label'     => false
                                     ])?>
                                 </div>
@@ -126,7 +126,7 @@
                                         'class'     => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
-                                        'value' => !empty($contact->fax) ? h($contact->fax) : '',
+                                        'value' => $contact->fax ?? '',
                                         'label'     => false
                                     ])?>
                                 </div>
@@ -140,7 +140,7 @@
                                         'class'     => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
-                                        'value' => !empty($contact->tax_code) ? h($contact->tax_code) : '',
+                                        'value' => $contact->tax_code ?? '',
                                         'label'     => false
                                     ])?>
                                 </div>
@@ -153,7 +153,7 @@
                                         'class'     => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
-                                        'value' => !empty($contact->email) ? h($contact->email) : '',
+                                        'value' => $contact->email ?? '',
                                         'label'     => false
                                     ])?>
                                 </div>
@@ -167,7 +167,7 @@
                                         'class'     => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
-                                        'value' => !empty($contact->website) ? h($contact->website) : '',
+                                        'value' => $contact->website ?? '',
                                         'label'     => false
                                     ])?>
                                 </div>
@@ -181,7 +181,7 @@
                                         'class'     => 'form-control',
                                         'data-parsley-required' => 'true',
                                         'data-parsley-trigger' => 'change',
-                                        'value' => !empty($contact->hotline) ? h($contact->hotline) : '',
+                                        'value' => $contact->hotline ?? '',
                                         'label'     => false
                                     ])?>
                                 </div>

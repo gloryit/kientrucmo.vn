@@ -31,6 +31,9 @@
 <link href="/css/template.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="/css/responsive.css" type="text/css" />
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/css/slick.css" rel="stylesheet" type="text/css" />
+<link href="/css/slick-theme.css" rel="stylesheet" type="text/css" />
+<?= $this->fetch('styles_top') ?>
 
 <script src="/js/jquery.min.js" type="text/javascript"></script>
 <script src="/js/jquery-noconflict.js" type="text/javascript"></script>

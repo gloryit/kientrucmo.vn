@@ -203,7 +203,7 @@ return [
     'Email' => [
         'default' => [
             'transport' => 'default',
-            'from' => Email['from'],
+            'from' => EMAIL_DEFAULT['from'],
             'charset' => 'utf-8',
             'headerCharset' => 'utf-8',
         ],

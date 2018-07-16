@@ -39,17 +39,6 @@
                     </script>
                 </div>
             </div>
-            <?php if (!empty($app_slides)): ?>
-                <div id="block1582babeb498723" style="background-color:rgba(255, 255, 255, 0); color:#333333" class="vtem-block extend widget-customhtml  col-md-12  hidden-tablet hidden-sm hidden-desktop hidden-md hidden-lg "  data-vgrid="12">
-                    <div class="vtem-block-inside clearfix">
-                        <div class="custom-html-content clearfix">
-                            <?php foreach ($app_slides as $slide): ?>
-                                <p><img src="<?= h($slide->link_images) ?>" width="1366" height="478" /></p>
-                            <?php endforeach ?>
-                        </div>
-                    </div>
-                </div>
-            <?php endif ?>
         </div>
     </div>
 </div>

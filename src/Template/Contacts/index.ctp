@@ -17,7 +17,7 @@
                     <meta itemprop="inLanguage" content="vi-VN">
                     <div class="page-header">
                         <h2 itemprop="headline">
-                            Liên Hệ Với + P A H </h2>
+                            Liên Hệ Với <?= h($contact->company) ?> </h2>
                     </div>
                     <dl class="article-info muted">
                         <dt class="article-info-term">Chi tiết	</dt>

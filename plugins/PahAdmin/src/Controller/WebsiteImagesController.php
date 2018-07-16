@@ -7,6 +7,7 @@ use App\Model\Entity\WebsiteImage;
 use Cake\Filesystem\File;
 use Cake\Http\Response;
 use Cake\I18n\Time;
+use Cake\Log\Log;
 use Cake\Validation\Validation;
 use Cake\Validation\Validator;
 use Intervention\Image\ImageManagerStatic;
@@ -21,6 +22,7 @@ class WebsiteImagesController extends AdminController {
 
     /**
      * @return void
+     * @throws \Exception
      */
     public function initialize()
     {
@@ -36,7 +38,7 @@ class WebsiteImagesController extends AdminController {
 
         $page = abs((int) $this->request->getData('page'));
         $keyword = $this->request->getData('keyword');
-        $limit = 15;
+        $limit = 25;
         $day = abs((int) $this->request->getData('day'));
         $month = abs((int) $this->request->getData('month'));
         $year = abs((int) $this->request->getData('year'));
@@ -159,7 +161,6 @@ class WebsiteImagesController extends AdminController {
 
             $errors = $file_validator->errors($this->request->getData());
 
-
             if ( !$errors ) {
 
                 $uploaded_file = $this->request->getUploadedFile('image');
@@ -223,7 +224,7 @@ class WebsiteImagesController extends AdminController {
      * @throws \Exception Exception.
      */
     public function remove($image_id) {
-        if ($this->request->is(['patch', 'post', 'put'])) {
+        if (!$this->request->is(['patch', 'post', 'put'])) {
             throw new \Exception('Invalid request, must be PUT or POST');
         }
 
@@ -237,11 +238,6 @@ class WebsiteImagesController extends AdminController {
         $image = $this->WebsiteImages->find()
             ->select([
                 'id',
-                'name',
-                'uri',
-                'width',
-                'height',
-                'created',
             ])
             ->where([
                 'id' => $image_id

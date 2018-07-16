@@ -25,22 +25,23 @@ use Cake\Routing\Router;
                 <?php foreach ($tops as $post): ?>
                     <div id="<?= h(md5($post->id . $post->created)) ?>"
                          style="background-color:rgba(255, 255, 255, 0); color:#333333"
-                         class="vtem-block system widget-module  col-md-4 col-sm-6 hidden-phone hidden-xs position-feature"  data-vgrid="4">
+                         class="vtem-block system widget-module col-md-4 col-sm-6 position-feature"  data-vgrid="4">
                         <div class="vtem-block-inside clearfix">
                             <div class="vtem-moduletable mod-basic clearfix moduletable">
                                 <h3 class="moduletable-title basic-title "><?= h($post->title) ?></h3>
                                 <div class="moduletable-content basic-body">
                                     <div class="custom"  >
-                                        <p style="text-align: justify;">
+                                        <div style="background: no-repeat 50%; background-size: cover; display: block; background-image: url(<?= Router::url(h($post->link_images), true) ?>);">
                                             <a href="<?= $this->Url->build(['_name' => 'services:view', h($post->slug)]) ?>">
-                                                <img src="<?= Router::url(h($post->link_images), true) ?>" alt="1office" width="336" height="222" style="margin-bottom: 10px; box-shadow: #444444 0px 5px 6px -6px;" />
+                                                <img src="/images/thumbnails/thumbnail-bg.png" alt="<?= $post->title ?>" style="display: block; width: 100%; vertical-align: middle;">
+                                                <img src="<?= Router::url(h($post->link_images), true) ?>" alt="<?= $post->title ?>" style="display: none; width: 100%; vertical-align: middle;" />
                                             </a>
                                             <span style="color: #333333;">
                                                 <a href="<?= $this->Url->build(['_name' => 'services:view', h($post->slug)]) ?>" style="color: #333333;">
                                                     <?= h($post->header) ?>
                                                 </a>
                                             </span>
-                                        </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
