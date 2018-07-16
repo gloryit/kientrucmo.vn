@@ -38,6 +38,7 @@ define('EMAIL_DEFAULT', [
     'timeout' => 30,
     'username' => 'nguyenchau.hoanganh@gmail.com',
     'password' => 'wjxbkslyuyzqmsrn',
+    'from' => 'nguyenchau.hoanganh@gmail.com',
 ]);
 
 /**
