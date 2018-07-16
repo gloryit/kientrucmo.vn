@@ -6,7 +6,7 @@
  * Time: 10:56
  */
 
-define('ASSET_DEV', true); // echo $this->Html->script('/assets/js'.(ASSET_DEV?'-dev':'').'/p_homepage.js?v='.ASSETS_VERSION )
+define('ASSET_DEV', false); // echo $this->Html->script('/assets/js'.(ASSET_DEV?'-dev':'').'/p_homepage.js?v='.ASSETS_VERSION )
 define('APP_TIMEZONE', 'Asia/Ho_Chi_Minh');
 define('ASSETS_VERSION', 1);
 define('DEFAULT_LANG', 'VI');
@@ -22,11 +22,11 @@ define('LOCALE_EN', APP . 'Locale' . DS . 'en' . DS . 'default.po');
  * Config database
  */
 define('DATABASE_DEFAULT', [
-    'host' => '163.44.194.35',
+    'host' => 'localhost',
     'port' => 3306,
-    'username' => 'cp464490_pah',
-    'password' => '946517Aa',
-    'database' => 'cp464490_pah'
+    'username' => 'root',
+    'password' => 'tmphucgl',
+    'database' => 'kientrucmo'
 ]);
 
 /**
