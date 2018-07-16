@@ -95,6 +95,7 @@ class PostsController extends AdminController
     /**
      * @param null $id
      * @return \Cake\Http\Response|null
+     * @throws \Aura\Intl\Exception
      */
     public function edit($id = null)
     {

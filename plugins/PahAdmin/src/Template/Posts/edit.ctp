@@ -83,7 +83,7 @@ $flash_error_key = '1234';
                                 <div class="col-md-8 show-image-upload">
                                     <div class="input-group" style="margin-bottom: 0; padding-bottom: 0">
                                         <input type="text"
-                                               class="form-control Posts"
+                                               class="form-control posts"
                                                required="required"
                                                data-parsley-errors-container="#picture-errors"
                                                data-parsley-trigger="change"
@@ -104,7 +104,7 @@ $flash_error_key = '1234';
                                             <img src="<?= $image_uri ?><?= $posts->modified?'?modified='.$posts->modified->timestamp:'' ?>" style="max-width: 100px; cursor: pointer; padding: 0 5px" class="posts image-show">
                                         <?php endforeach; ?>
                                     <?php endif; ?>
-                                    <input value="<?= $posts->uri ?>" type="hidden" class="form-control Posts" name="image_uri">
+                                    <input value="<?= $posts->uri ?>" type="hidden" class="form-control posts" name="image_uri">
                                 </div>
                             </div>
                             <!-- End Images region -->
@@ -246,6 +246,8 @@ $flash_error_key = '1234';
               $url += image[i].uri + ' '
               $('.show-image-upload').append(appendImage(image[i].uri));
           }
+          console.log($url)
+          console.log('input' + $this.data('image-target'))
           $('input' + $this.data('image-target')).val($url).change();
       };
       uploadBox.open();
