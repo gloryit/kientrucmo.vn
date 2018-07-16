@@ -45,12 +45,14 @@ class ContactsController extends AppController {
             ';
 
             $email = new Email();
-            $email->setTo('tmphucgl@gmail.com');
+            $email->setTo(EMAIL_DEFAULT['from']);
             $email
                 ->setEmailFormat('html')
-                ->addCc('tmphucgl@gmail.com')
+                ->addCc(EMAIL_DEFAULT['from'])
                 ->setSubject($data['subject'])
                 ->send($datas);
+
+            $this->redirect('/');
         }
     }
 }

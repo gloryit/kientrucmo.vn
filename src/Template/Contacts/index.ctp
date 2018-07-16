@@ -58,7 +58,7 @@
                                         <tbody>
                                             <tr>
                                                 <td colspan="2">
-                                                    <label for="vtem_contact_name">Name<span class="star">*</span></label>
+                                                    <label for="vtem_contact_name">Tên: <span class="star">*</span></label>
                                                     <?= $this->Form->control('name', [
                                                         'class' => 'vt_inputbox required',
                                                         'id' => 'vtem_contact_name',
@@ -70,7 +70,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
-                                                    <label for="vtem_contact_email">Email<span class="star">*</span></label>
+                                                    <label for="vtem_contact_email">Email: <span class="star">*</span></label>
                                                     <?= $this->Form->control('email', [
                                                         'type' => 'email',
                                                         'id' => 'vtem_contact_email',
@@ -82,7 +82,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><label for="vtem_contact_subject">Subject<span class="star">*</span></label>
+                                                <td colspan="2"><label for="vtem_contact_subject">Tiêu đề: <span class="star">*</span></label>
                                                     <?= $this->Form->control('subject', [
                                                         'id' => 'vtem_contact_subject',
                                                         'class' => 'vt_inputbox required',
@@ -94,7 +94,7 @@
                                             </tr>
                                             <tr>
                                                 <td valign="top" colspan="2">
-                                                    <label for="vtem_contact_message">Message<span class="star">*</span></label>
+                                                    <label for="vtem_contact_message">Nội dung: <span class="star">*</span></label>
                                                     <?= $this->Form->textarea('message', [
                                                         'type' => 'quote',
                                                         'class' => 'editor-wrapper vt_inputbox required',
@@ -109,7 +109,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
-                                                    <input id="vtbutton" class="vtem_contact_button validate" type="submit" value="Send Message">
+                                                    <input id="vtbutton" class="vtem_contact_button validate" type="submit" value="Gửi">
                                                 </td>
                                             </tr>
                                         </tbody>

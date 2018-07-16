@@ -246,8 +246,6 @@ $flash_error_key = '1234';
               $url += image[i].uri + ' '
               $('.show-image-upload').append(appendImage(image[i].uri));
           }
-          console.log($url)
-          console.log('input' + $this.data('image-target'))
           $('input' + $this.data('image-target')).val($url).change();
       };
       uploadBox.open();
