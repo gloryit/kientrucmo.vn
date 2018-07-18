@@ -7,6 +7,7 @@
  *
  * @var \App\View\AppView $this
  * @var string $isPage
+ * @var \App\Model\Entity\Logo $logo
  */
 ?>
 <div id="section14f64406ccc3815"
@@ -17,7 +18,7 @@
                 <div class="vtem-block-inside clearfix">
                     <div class="logo1 clearfix">
                         <a href="/">
-                            <img src="/images/logo/logo-kien-truc-mo.png" alt="" class="" />
+                            <img src="<?= h($logo->uri) ?>" alt="<?= h($logo->alias) ?>" title="<?= h($logo->name) ?>" class="" />
                         </a>
                     </div>
                 </div>

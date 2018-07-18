@@ -134,7 +134,7 @@ use Cake\Routing\Router;
 </div>
 
 <div id="section1581df5c127330"
-     class="vtem-section section-clientschoose text-center clearfix" style="background-color:rgba(255, 255, 255, 0); color:#333333;">
+     class="vtem-section section-clientschoose text-center clearfix" style="background-color: #4f6d78; color:#333333;">
     <div class="vtem-section-inside container clearfix">
         <div class="row section-content clearfix">
             <div id="block1581ecabe431929" style="background-color:rgba(255, 255, 255, 0); color:#333333" class="vtem-block system widget-module  col-md-12  hidden-phone hidden-xs position-outline"  data-vgrid="12">

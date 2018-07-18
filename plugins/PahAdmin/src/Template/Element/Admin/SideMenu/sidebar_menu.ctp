@@ -12,6 +12,9 @@
                 <a href="<?= $this->Url->build(['controller' => 'Slides', 'action' => 'index', 'plugin' => 'PahAdmin']) ?>"><i class="fa fa-sliders"></i> SLIDES </a>
             </li>
             <li>
+                <a href="<?= $this->Url->build(['controller' => 'Menus', 'action' => 'logo', 'plugin' => 'PahAdmin', '1']) ?>"><i class="fa fa-users"></i> LOGO </a>
+            </li>
+            <li>
                 <a href="<?= $this->Url->build(['controller' => 'Menus', 'action' => 'index', 'plugin' => 'PahAdmin']) ?>"><i class="fa fa-users"></i> MENUS </a>
             </li>
             <li>

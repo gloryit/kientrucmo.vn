@@ -30,6 +30,7 @@ use Cake\Event\Event;
  * @property \App\Model\Table\WebsiteImagesTable $WebsiteImages
  * @property \PahAdmin\Controller\Component\WebsiteImageComponent $WebsiteImage
  * @property \App\Model\Table\BannersTable $Banners
+ * @property \App\Model\Table\LogosTable $Logos
  * @link https://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller
@@ -107,7 +108,11 @@ class AppController extends Controller
             ->where('ParentMenus.id IS NOT NULL')
             ->toArray();
 
-        $this->set(compact('menus', 'child_menus'));
+        $this->loadModel('Logos');
+        $logo = $this->Logos->find()
+            ->first();
+
+        $this->set(compact('menus', 'child_menus', 'logo'));
     }
 
     /**

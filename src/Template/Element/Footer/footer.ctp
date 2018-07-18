@@ -65,11 +65,11 @@
             <div id="block14f6440db201424" style="background-color:rgba(255, 255, 255, 0); color:#FFFFFF" class="vtem-block system widget-totop  col-md-2 col-sm-2 col-xs-4 hidden-phone hidden-xs "  data-vgrid="2">
                 <div class="vtem-block-inside clearfix"><a class="vtemgotop pull-right fa fa-angle-up" href="#">&nbsp;</a></div>
             </div>
-            <div id="block1582fa2e3f43929" style="background-color:rgba(255, 255, 255, 0); color:#333333" class="vtem-block system widget-module  col-md-12  hidden-tablet hidden-sm hidden-desktop hidden-md hidden-lg position-info"  data-vgrid="12">
+            <div id="block1582fa2e3f43929" style="background-color: #4f6d78; color:#ffffff" class="vtem-block system widget-module  col-md-12  hidden-tablet hidden-sm hidden-desktop hidden-md hidden-lg position-info"  data-vgrid="12">
                 <div class="vtem-block-inside clearfix">
                     <div class="custom"  >
                         <div style="font-family: Roboto, Arial, Helvetica, sans-serif; font-size: 80%; text-align: center;">
-                            <span style="color: #008080;"><?= h($app_contact->company) ?></span>
+                            <span style="color: #ffcc00;"><?= h($app_contact->company) ?></span>
                             <br /><?= h($app_contact->address) ?><br />Tel: <?= h($app_contact->tel) ?> - Fax: <?= h($app_contact->fax) ?>
                             <br />MST:&nbsp;<?= h($app_contact->tax_code) ?>
                             -&nbsp;Email:&nbsp;<?= h($app_contact->email) ?>
