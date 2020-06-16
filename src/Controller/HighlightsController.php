@@ -17,15 +17,17 @@ class HighlightsController extends AppController {
 
     public function index() {
         $posts = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'menu_id' => 3,
+                'Posts.menu_id' => 3,
             ])
             ->orderDesc('created')
             ->toArray();
 
         $menu = $this->Menus->find()
+            ->contain('Posts')
             ->where([
-                'id' => 3,
+                'Menus.id' => 3,
             ])
             ->firstOrFail();
 
@@ -39,15 +41,17 @@ class HighlightsController extends AppController {
     public function detail($slug) {
         /** @var \App\Model\Entity\Post $post */
         $post = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'slug' => $slug,
+                'Posts.slug' => $slug,
             ])
             ->firstOrFail();
 
         /** @var \App\Model\Entity\Menu $menu */
         $menu = $this->Menus->find()
+            ->contain('Posts')
             ->where([
-                'id' => $post->menu_id,
+                'Menus.id' => $post->menu_id,
             ])
             ->first();
 

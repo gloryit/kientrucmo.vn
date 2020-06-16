@@ -22,15 +22,17 @@ class RecruitmentsController extends AppController {
 
         /** @var \App\Model\Entity\Post $post */
         $post = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'menu_id' => 7,
+                'Posts.menu_id' => 7,
             ])
             ->first();
 
         /** @var \App\Model\Entity\Menu $menu */
         $menu = $this->Menus->find()
+            ->contain('Posts')
             ->where([
-                'id' => $post->menu_id,
+                'Menus.id' => $post->menu_id,
             ])
             ->first();
 

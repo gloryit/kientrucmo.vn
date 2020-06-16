@@ -66,10 +66,11 @@ class AppController extends Controller
         $this->loadModel('Banners');
 
         $app_highlights = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'menu_id' => 3,
+                'Posts.menu_id' => 3,
             ])
-            ->orderDesc('created')
+            ->orderDesc('Posts.created')
             ->limit(8)
             ->toArray();
 

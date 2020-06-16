@@ -23,10 +23,11 @@ class ServicesController extends AppController {
      */
     public function index() {
         $posts = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'menu_id' => 2,
+                'Posts.menu_id' => 2,
             ])
-            ->orderDesc('created')
+            ->orderDesc('Posts.created')
             ->toArray();
 
         $menu = $this->Menus->find()
@@ -44,23 +45,26 @@ class ServicesController extends AppController {
     public function detail($slug) {
         /** @var \App\Model\Entity\Post $post */
         $post = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'slug' => $slug,
-                'menu_id' => 2,
+                'Posts.slug' => $slug,
+                'Posts.menu_id' => 2,
             ])
             ->first();
 
         /** @var \App\Model\Entity\Menu $menu */
         $menu = $this->Menus->find()
+            ->contain('Posts')
             ->where([
-                'id' => $post->menu_id,
+                'Menus.id' => $post->menu_id,
             ])
             ->first();
 
         $any = $this->Posts->find()
+            ->contain('Menus')
             ->where([
-                'slug !=' => $slug,
-                'menu_id' => 2,
+                'Posts.slug !=' => $slug,
+                'Posts.menu_id' => 2,
             ])
             ->toArray();
 
@@ -92,6 +96,7 @@ class ServicesController extends AppController {
 
     public function details($category, $slug, $id) {
         $this->request->allowMethod('get');
+
         $post = $this->Posts->find()
             ->contain('Menus')
             ->where([
