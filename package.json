@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/gloryit/pah.com.vn#readme",
   "dependencies": {
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass": "^3.4.1",
     "chalk": "^2.4.1",
     "commander": "^2.16.0"
   }
